@@ -34,6 +34,7 @@ const LoginPage = () => {
                                     <a href="#" className="text-sm text-purple-500 font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                                 </div>
                                 <button type="submit" className="w-full text-white bg-purple-500 hover:bg-purple-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
+                                <button disabled className='w-full text-center' type='button'>or sign up with</button>
                                 <button className="w-full flex items-center justify-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                     <svg
                                         className="h-6 w-6 mr-2"
@@ -83,7 +84,7 @@ const LoginPage = () => {
                                     <span>Continue with Google</span>
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-purple-500">Sign up</a>
+                                    Don’t have an account yet? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-purple-500">Sign up</a>
                                 </p>
                             </form>
                         </div>
