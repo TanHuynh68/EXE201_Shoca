@@ -1,21 +1,27 @@
 import React from 'react'
 
 const RegisterPage = () => {
-  return (
-    <div>
-      <section className="bg-gray-50">
-                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
-                        Flowbite
+    return (
+        <div className="min-h-screen bg-gradient-to-br flex items-center justify-center">
+            <section className="bg-white  p-8 w-full max-w-md">
+                <div className=" mb-6">
+                    <a href="#" className="flex justify-center items-center mb-4">
+                        <img
+                            className="w-12 h-12"
+                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+                            alt="logo"
+                        />
                     </a>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 
                             <form className="space-y-4 md:space-y-6" action="#">
-                            <div>
+                                <div>
+                                    <label className="block mb-2 text-center font-bold text-xl ">Create an account</label>
+                                </div>
+                                <div>
                                     <label className="block mb-2 text-sm font-medium ">Name</label>
-                                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
+                                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nguyen Van A" />
                                 </div>
                                 <div>
                                     <label className="block mb-2 text-sm font-medium ">Email Address</label>
@@ -23,12 +29,12 @@ const RegisterPage = () => {
                                 </div>
                                 <div>
                                     <label className="block mb-2 text-sm font-medium ">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                 </div>
                                 <div>
-                                    <p>By continuing, you agree to out <span className='text-purple-500'>terms of service.</span></p>
+                                    <p>By continuing, you agree to out <span className='text-purple-900'>terms of service.</span></p>
                                 </div>
-                                <button type="submit" className="w-full text-white bg-purple-500 hover:bg-purple-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign up</button>
+                                <button type="submit" className="w-full text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign up</button>
                                 <button disabled className='w-full text-center' type='button'>or sign up with</button>
                                 <button className="w-full flex items-center justify-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                     <svg
@@ -79,15 +85,15 @@ const RegisterPage = () => {
                                     <span>Continue with Google</span>
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-500">Sign in here</a>
+                                    Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Sign in here</a>
                                 </p>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default RegisterPage
