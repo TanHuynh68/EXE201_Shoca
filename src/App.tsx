@@ -12,10 +12,10 @@ function App() {
     location.pathname.includes(PATH.REGISTER)
   return (
     <>
-
         <div className="flex flex-col min-h-screen">
-          {/* {!isNotUseHeaderFooter && <Navbar />}
-          {!isNotUseHeaderFooter && <Header />} */}
+             {/* {!isNotUseHeaderFooter && <Header />}  */}
+             {!isNotUseHeaderFooter && <Navbar />}
+      
           <div className="flex-grow">
             <AppRouter />
           </div>
