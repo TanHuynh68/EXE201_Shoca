@@ -2,7 +2,7 @@
 import { PATH, roles } from './consts'
 import { FooterComponent, Header, Navbar } from './components'
 import AppRouter from './routers'
-import { BrowserRouter } from "react-router-dom";
+
 function App() {
   const isNotUseHeaderFooter =
     location.pathname.includes(roles.ADMIN) ||
@@ -12,7 +12,7 @@ function App() {
     location.pathname.includes(PATH.REGISTER)
   return (
     <>
-      <BrowserRouter>
+
         <div className="flex flex-col min-h-screen">
           {/* {!isNotUseHeaderFooter && <Navbar />}
           {!isNotUseHeaderFooter && <Header />} */}
@@ -21,7 +21,6 @@ function App() {
           </div>
           {/* {!isNotUseHeaderFooter && <FooterComponent />} */}
         </div>
-      </BrowserRouter>
     </>
   )
 }
