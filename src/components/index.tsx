@@ -1,3 +1,7 @@
 export { default as Header } from './header'
-// export { default as FooterComponent } from './footer'
+export { default as FooterComponent } from './footer'
 export { default as Navbar } from './nav'
+export { default as ArtistCard } from './artist-card'
+export { default as BorderText } from './border-text'
+export { default as DesignCard } from './design-card'
+export { default as AdminDashboardCard } from './admin-dashboard-card'

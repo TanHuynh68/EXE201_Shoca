@@ -1,243 +1,113 @@
-// import {
-//   Layout,
-//   Row,
-//   Col,
-//   Typography,
-//   Divider,
-//   Form,
-//   Button,
-//   Input,
-// } from "antd";
-// import {
-//   MailOutlined,
-//   PhoneOutlined,
-//   YoutubeOutlined,
-//   InstagramOutlined,
-//   TikTokOutlined,
-//   FacebookOutlined,
-// } from "@ant-design/icons";
+import React from 'react';
 
-// import { footerLinks } from "../../consts";
+const FooterComponent: React.FC = () => {
+  return (
+    <footer className="mt-10 bg-purple-800 text-white pt-10 px-4">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        {/* Exclusive */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Exclusive</h3>
+          <p className="mb-4">Subscribe</p>
+          <p className="text-sm mb-4">Get 10% off your first order</p>
+          <div className="flex items-center border border-white rounded-md p-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="bg-transparent flex-grow text-sm px-2 outline-none"
+            />
+            <button className="text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="mt-6">
+            <div className="w-8 h-8 bg-white text-purple-800 rounded-full flex items-center justify-center font-bold text-lg">
+              S
+            </div>
+          </div>
+        </div>
 
-// import "./footer.css";
-// const { Footer } = Layout;
-// const { Title, Paragraph, Text } = Typography;
+        {/* Support */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Support</h3>
+          <p className="text-sm">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+          <p className="text-sm mt-2">exclusive@gmail.com</p>
+          <p className="text-sm mt-2">+88015-88888-9999</p>
+        </div>
 
-// const FooterComponent = () => {
-//   return (
-//     <div>
-//       <Footer style={{ backgroundColor: "#00416c", padding: "40px 0 40px 0" }}>
-//         <Row>
-//           <Col flex={2}>
-//             <Row style={{ display: "flex", justifyContent: "center" }}>
-//               <p
-//                 style={{
-//                   maxWidth: "420px",
-//                   fontSize: "24px",
-//                   fontWeight: "bold",
-//                   color: "#fff",
-//                   lineHeight: "30px",
-//                 }}
-//               >
-//                 <span style={{ color: "#fed103" }}>Join our community </span>
-//                 of builders, hackers, and thinkers! You’ll be the first to know
-//                 about new videos, products, and deals - don’t miss out.
-//               </p>
-//             </Row>
-//             <Row style={{ display: "flex", justifyContent: "center" }}>
-//               <Form
-//                 id="newsletterForm"
-//                 name="newsletterForm"
-//                 // layout="inline"
-//                 style={{
-//                   marginTop: "16px",
-//                   width: "65%",
-//                   display: "flex",
-//                   justifyContent: "center",
-//                   gap: '10px'
-//                 }}
-//                 onFinish={(values) => {
-//                   console.log("Success:", values);
-//                   // Handle form submission
-//                 }}
-//               >
-//                 <Form.Item
-//                   name="email"
-//                   className="input-container"
-//                   style={{ width: "300px" }}
-//                   rules={[
-//                     {
-//                       type: "email",
-//                       message: "Please enter a valid email!",
-//                     },
-//                     {
-//                       required: true,
-//                       message: "Please input your email!",
-//                     },
-//                   ]}
-//                 >
-//                   <Input className="input-email" placeholder="Your Email" />
-//                 </Form.Item>
-//                 <Form.Item>
-//                   <Button
-//                     type="primary"
-//                     htmlType="submit"
-//                     className="submit-button"
-//                     aria-label="Subscribe"
-//                     style={{ padding: "23px 24px", fontWeight: "600" }}
-//                   >
-//                     SIGN UP
-//                   </Button>
-//                 </Form.Item>
-//               </Form>
-//             </Row>
+        {/* Account */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Account</h3>
+          <ul className="space-y-2 text-sm">
+            <li>My Account</li>
+            <li>Login / Register</li>
+            <li>Cart</li>
+            <li>Wishlist</li>
+            <li>Shop</li>
+          </ul>
+        </div>
 
-//             <Row justify="center" align="middle">
-//               <Col span={12} className="flex justify-center items-center gap-4" style={{ padding: "10px 30px", fontSize: "25px" }}>
-//                 <YoutubeOutlined style={{ color: "white", padding: "0 10px" }} />
-//                 <InstagramOutlined style={{ color: "white", padding: "0 10px" }} />
-//                 <TikTokOutlined style={{ color: "white", padding: "0 10px" }} />
-//                 <FacebookOutlined style={{ color: "white", padding: "0 10px" }} />
-//               </Col>
-//             </Row>
+        {/* Quick Link */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Quick Link</h3>
+          <ul className="space-y-2 text-sm">
+            <li>Privacy Policy</li>
+            <li>Terms Of Use</li>
+            <li>FAQ</li>
+            <li>Contact</li>
+          </ul>
+        </div>
 
-//             <Row justify="center" align="middle">
-//               <Col span={12} className="flex justify-center items-center gap-4">
-//                 <Text style={{ color: "white", paddingTop: "20px", fontWeight: "bold" }}>
-//                   &copy; 2024 CrunchLabs LLC - All Rights Reserved
-//                 </Text>
-//               </Col>
-//             </Row>
-//           </Col>
+        {/* Download App */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Download App</h3>
+          <p className="text-sm mb-4">Save $3 with App New User Only</p>
+          <div className="flex space-x-4">
+            <img
+              src="https://via.placeholder.com/100x40?text=Google+Play"
+              alt="Google Play"
+              className="h-10"
+            />
+            <img
+              src="https://via.placeholder.com/100x40?text=App+Store"
+              alt="App Store"
+              className="h-10"
+            />
+          </div>
+          <div className="flex space-x-4 mt-4 text-white">
+            <a href="#" className="text-xl">
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a href="#" className="text-xl">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" className="text-xl">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#" className="text-xl">
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* Footer bottom */}
+      <div className="border-t border-purple-700 mt-10 pt-4 text-center">
+        <p className="text-sm text-purple-300">© 2024 Exclusive. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
 
-//           <Col flex={3}>
-//             {/* <Row justify="center" align="top">
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Contact Us
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>
-//                   <MailOutlined style={{ color: "white" }} />{" "}
-//                   <Text style={{ color: "white" }} strong>
-//                     help@crunchlabs.com
-//                   </Text>
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   <PhoneOutlined style={{ color: "white" }} />{" "}
-//                   <Text style={{ color: "white" }} strong>
-//                     650-267-2473
-//                   </Text>
-//                 </Paragraph>
-//               </Col>
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Products
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>Build Box</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Hack Pack</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Merch & Extras</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Replacement Parts
-//                 </Paragraph>
-//               </Col>
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Bonus
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>Videos</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Roblox</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>International</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Camp CrunchLabs
-//                 </Paragraph>
-//               </Col>
-//             </Row> */}
-
-//             {/* Second Row of Links */}
-//             {/* <Row justify="center" align="top" style={{ marginTop: "20px" }}>
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Our Company
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>About Us</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>FAQs</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Build Box Reviews
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Hack Pack Reviews
-//                 </Paragraph>
-//               </Col>
-
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Programs
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Educators (Bulk Orders)
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Class CrunchLabs
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Referral Program
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Affiliate Program
-//                 </Paragraph>
-//               </Col>
-
-//               <Col xs={24} sm={12} md={6}>
-//                 <Title style={{ color: "white" }} level={4}>
-//                   Legal & Policies
-//                 </Title>
-//                 <Paragraph style={{ color: "white" }}>
-//                   Terms & Conditions
-//                 </Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Privacy Notice</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Accessibility</Paragraph>
-//                 <Paragraph style={{ color: "white" }}>Other Policies</Paragraph>
-//               </Col>
-//             </Row> */}
-
-//             <Row justify="center" align="top">
-//               {footerLinks.map((section, index) => (
-//                 <Col key={index} xs={24} sm={12} md={6}>
-//                   <Title style={{ color: "white" }} level={4}>
-//                     {section.title}
-//                   </Title>
-//                   {section.links.map((link, linkIndex) => (
-//                     <Paragraph key={linkIndex} style={{ color: "white" }}>
-//                       <a href={link.url} style={{ color: "white" }}>
-//                         {link.name}
-//                       </a>
-//                     </Paragraph>
-//                   ))}
-//                 </Col>
-//               ))}
-//             </Row>
-
-//           </Col>
-//         </Row>
-
-//         {/* <Divider style={{ margin: "20px 0", borderColor: "#fff" }} />
-
-//         <Row justify="center" align="middle">
-//           <Col span={12} className="flex justify-center items-center gap-4">
-//             <YoutubeOutlined style={{ color: "white" }} />
-//             <InstagramOutlined style={{ color: "white" }} />
-//             <TikTokOutlined style={{ color: "white" }} />
-//             <FacebookOutlined style={{ color: "white" }} />
-//           </Col>
-//           <Col span={12} className="text-center">
-//             <Text style={{ color: "white" }}>
-//               &copy; 2024 CrunchLabs LLC - All Rights Reserved
-//             </Text>
-//           </Col>
-//         </Row> */}
-//       </Footer>
-//     </div>
-//   );
-// };
-
-// export default FooterComponent;
+export default FooterComponent;

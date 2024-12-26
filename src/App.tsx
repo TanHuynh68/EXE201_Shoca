@@ -1,6 +1,6 @@
 
 import { PATH, roles } from './consts'
-import { FooterComponent, Header, Navbar } from './components'
+import { FooterComponent, Navbar } from './components'
 import AppRouter from './routers'
 
 function App() {
@@ -9,7 +9,8 @@ function App() {
     location.pathname.includes(roles.STAFF) ||
     location.pathname.includes(roles.MANAGER) ||
     location.pathname.includes(PATH.LOGIN) ||
-    location.pathname.includes(PATH.REGISTER)
+    location.pathname.includes(PATH.REGISTER)||
+    location.pathname.includes(PATH.FORGOT_PASSWORD)
   return (
     <>
         <div className="flex flex-col min-h-screen">
@@ -19,7 +20,7 @@ function App() {
           <div className="flex-grow">
             <AppRouter />
           </div>
-          {/* {!isNotUseHeaderFooter && <FooterComponent />} */}
+          {!isNotUseHeaderFooter && <FooterComponent />}
         </div>
     </>
   )
