@@ -1,5 +1,6 @@
 export const PATH = {
     /* GUEST PATHS */
+   
     HOME: "/",
     LOGIN: "/login",
     ABOUT: "/about",
@@ -36,6 +37,7 @@ export const PATH = {
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "/profile",
     CUSTOMER_CHANGE_PASSWORD: "/change-password",
+    CUSTOMER_REGISTER_PREMIUM: "/premium",
     //Staff
     STAFF: '/staff/*',
     STAFF_LOGIN: '/manager/login',

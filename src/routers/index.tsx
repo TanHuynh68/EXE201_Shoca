@@ -1,7 +1,7 @@
 import {  Route, Routes } from "react-router-dom"
 
 import { PATH } from "../consts"
-import { AdminDashboard, ForgotPassword, Home, Login, Register } from "../pages"
+import { AdminDashboard, ForgotPassword, Home, Login, Register, RegisterPremium } from "../pages"
 
 const AppRouter = () => {
     // const { canAccess } = useRoleRedirect();
@@ -14,6 +14,8 @@ const AppRouter = () => {
             <Route path={PATH.HOME} element={<Home />} />
             {/* Admin */}
             <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} />
+            {/* Customer */}
+            <Route path={PATH.CUSTOMER_REGISTER_PREMIUM} element={<RegisterPremium />} />
         </Routes>
     )
 }
