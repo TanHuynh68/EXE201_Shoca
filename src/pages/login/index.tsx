@@ -4,6 +4,7 @@ import { Button, Checkbox, Form, Input, message } from 'antd';
 import { loginService } from '../../services';
 import { MESSAGE } from '../../consts';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const LoginPage = () => {
     const [form] = Form.useForm();
@@ -19,8 +20,11 @@ const LoginPage = () => {
         const response = await loginService(values.email, values.password)
         console.log("response: ", response)
         if(response && response.data.accessToken){
+            const decodedToken = jwtDecode(response.data.accessToken);
+            console.log("decodedToken: ",decodedToken)
             navigate('/')
             localStorage.setItem("token", response.data.accessToken)
+            localStorage.setItem("user", JSON.stringify(decodedToken))
             message.success(MESSAGE.LOGIN_SUCCESSFULLY)  
         }else{
             message.error(MESSAGE.LOGIN_FAILED) 
