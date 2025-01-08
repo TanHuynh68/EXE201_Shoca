@@ -20,4 +20,11 @@ interface Account {
     deletedBy: string | null;
     isDeleted: boolean;
   }
+
+interface filterAccount{
+    keyword: string| "",
+    gender: number | "",
+    role: number | "",
+    isDeleted: boolean | "",
+}
   
