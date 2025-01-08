@@ -43,7 +43,7 @@ const Dashboard: React.FC = () => {
         if (currentPath.startsWith('/admin')) {
             setItems([
                 getItem('Dashboard', '/admin/dashboard', <DesktopOutlined />),
-                getItem('Manage User', '/admin/manage-user', <UserOutlined />),
+                getItem('Manage User', '/admin/manage-users', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/clinic-owner')) {
             setItems([
@@ -113,7 +113,7 @@ const Dashboard: React.FC = () => {
                 <Header className="bg-white flex justify-between">
                     <div>
                         {/* <div className='h-5'>Tên: {user?.userEmail}</div> */}
-                        <div className='h-5'>Địa chỉ email: {user?.userEmail}</div>
+                        {/* <div className='h-5'>Địa chỉ email: {user?.userEmail}</div> */}
                     </div>
                     <Dropdown
                         overlay={<Menu items={menuItems} />}

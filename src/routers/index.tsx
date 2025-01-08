@@ -25,10 +25,11 @@ const AppRouter = () => {
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />
-            <Route path={PATH.ADMIN} element={canAccess([roles.ADMIN]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}>
+            {/* <Route path={PATH.ADMIN} element={canAccess([roles.ADMIN]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}> */}
+            <Route path={PATH.ADMIN} element={<Dashboard />}>
                 {/* Admin */}
                 <Route path={PATH.ADMIN_MANAGE_USER} element={<AdminManageUser />} />
-                <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN]) ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} />
+                {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>

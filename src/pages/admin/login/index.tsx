@@ -21,7 +21,7 @@ const AdminLoginPage = () => {
            if(response && response.data.accessToken){
                const decodedToken = jwtDecode(response.data.accessToken);
                console.log("decodedToken: ",decodedToken)
-               navigate('/')
+               navigate('/admin/manager-users')
                localStorage.setItem("token", response.data.accessToken)
                localStorage.setItem("user", JSON.stringify(decodedToken))
                message.success(MESSAGE.LOGIN_SUCCESSFULLY)  
