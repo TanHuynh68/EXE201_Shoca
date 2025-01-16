@@ -4,6 +4,7 @@ export const PATH = {
     HOME: "/",
     LOGIN: "/login",
     REGISTER: "/register",
+    JOB: "/job",
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
     //Customer
@@ -17,7 +18,7 @@ export const PATH = {
     //admin
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: 'dashboard',
-    ADMIN_MANAGE_USER: 'manage-users',
+    ADMIN_MANAGE_USER: 'manage-accounts',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
 

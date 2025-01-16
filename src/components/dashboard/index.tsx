@@ -43,7 +43,7 @@ const Dashboard: React.FC = () => {
         if (currentPath.startsWith('/admin')) {
             setItems([
                 getItem('Dashboard', '/admin/dashboard', <DesktopOutlined />),
-                getItem('Manage User', '/admin/manage-users', <UserOutlined />),
+                getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/clinic-owner')) {
             setItems([
@@ -127,7 +127,7 @@ const Dashboard: React.FC = () => {
                         </a>
                     </Dropdown>
                 </Header>
-                <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+                <Content  style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                     <Outlet />
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
