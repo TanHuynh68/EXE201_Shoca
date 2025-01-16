@@ -7,6 +7,7 @@ export const PATH = {
     JOB: "/job",
     JOB_INFO: "/job-info",
     APPLY: "/apply",
+    APPLY_SUCCESS: "/apply-success",
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
     //Customer

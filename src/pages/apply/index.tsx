@@ -9,7 +9,7 @@ const ApplyPage = () => {
                     <div className='text-xl text-center'>
                         Graphic Designer - A Company
                     </div>
-                    <div className='border-2 border-solid border-purple-900 mt-2'>
+                    <div className='border border-solid border-purple-900 mt-2'>
 
                     </div>
                     <div className='mt-5 text-center font-bold text-xl'>
@@ -54,12 +54,12 @@ const ApplyPage = () => {
                             </div>
                         </div>
                         <div className='w-96 text-gray-400 p-5 bg-white border-2 border-purple-300 rounded-lg shadow'>
-                        Lời nhắn của bạn...
+                            Lời nhắn của bạn...
                         </div>
                     </div>
                     <div className='text-center '>
                         <button type="button" className="focus:outline-none mt-10 text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:ring-purple-900 font-medium rounded-xl text-sm px-5 py-2.5 mb-2 ">
-                        Nộp đơn đăng ký
+                            Nộp đơn đăng ký
                         </button>
                     </div>
                 </div>
