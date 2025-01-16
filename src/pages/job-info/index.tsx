@@ -15,7 +15,6 @@ const BENEFITS = ["Always be creative and try new things.",
 const JobInfo = () => {
     return (
         <div>
-
             <div style={{ width: "900" }} className="container mx-auto mt-10 bg-white border border-purple-500 rounded-lg shadow  dark:border-gray-700">
                 <p className='mt-10 text-3xl font-bold text-center'>
                     Graphic Designer

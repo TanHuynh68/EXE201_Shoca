@@ -6,6 +6,7 @@ export const PATH = {
     REGISTER: "/register",
     JOB: "/job",
     JOB_INFO: "/job-info",
+    APPLY: "/apply",
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
     //Customer
