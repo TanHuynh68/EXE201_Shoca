@@ -10,6 +10,7 @@ export const PATH = {
     APPLY_SUCCESS: "/apply-success",
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
+    POST_JOB: "/post-job",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",
