@@ -11,6 +11,7 @@ export const PATH = {
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
     POST_JOB: "/post-job",
+    POST: "/post",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",
