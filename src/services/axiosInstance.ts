@@ -1,9 +1,5 @@
 import axios from "axios";
 import config from "../secret";
-import { message } from "antd";
-import { PATH } from "../consts";
-import {HttpStatus,roles} from '../enum'
-import { getUserFromLocalStorage } from "../utils";
 
 export const axiosInstance = axios.create({
     baseURL: config.BASE_URL,
@@ -37,6 +33,7 @@ axiosInstance.interceptors.request.use(
       return response.data;
     },
     (error) => {
+      console.log("axiosInstance: ", error.response.data)
       if (error.response && error.response.status === 401) {
         return console.log("401 - Unauthorized")
       } else if (error.response && error.response.status === 403) {
@@ -47,7 +44,7 @@ axiosInstance.interceptors.request.use(
       } else if (error.response && error.response.status === 500) {
         return console.log("500 - Internal server error")
       }
-      return Promise.reject(error);
+      return Promise.reject(error.response.data);
     }
   );
   
