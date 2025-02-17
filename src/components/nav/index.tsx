@@ -28,6 +28,10 @@ const Navbar = () => {
     localStorage.removeItem('user');
     navigate('/')
   }
+
+  const goToRegister = ()=>{
+    navigate('/register')
+  }
   return (
     <Row className='bg-purple-700 flex items-center text-white'>
       <Col span={4}>
@@ -51,9 +55,9 @@ const Navbar = () => {
           {
             !isLogin ? <>
               <Col span={12}>
-                <Link to={"/register"}>
-                  Sign up
-                </Link>
+                <div onClick={()=>goToRegister()}>
+                Sign up
+                </div>
               </Col>
               <Col span={12}>
                 <Link to={"/login"}>

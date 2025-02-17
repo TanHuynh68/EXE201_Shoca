@@ -16,7 +16,6 @@ function App() {
       <div className="flex flex-col min-h-screen">
         {/* {!isNotUseHeaderFooter && <Header />}  */}
         {!isNotUseHeaderFooter && <Navbar />}
-
         <div className="flex-grow">
           <AppRouter />
         </div>

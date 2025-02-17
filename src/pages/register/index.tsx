@@ -4,6 +4,7 @@ import { Form, Input, Button, Select, DatePicker, message } from 'antd';
 import { registerService } from '../../services/authen.service';
 import { MESSAGE, PATH } from '../../consts';
 import { useNavigate } from 'react-router-dom';
+import { IMG } from '../../consts/variable';
 
 const { Option } = Select;
 export interface FormDataRegister {
@@ -62,12 +63,12 @@ const RegisterPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br flex items-center justify-center ">
-            <section className="bg-white p-8 w-full max-w-4xl">
-                <div className="mb-6 w-[1000px]">
+            <section className="bg-white p-8 w-[1000px]">
+                <div className="mb-6 ">
                     <a href="#" className="flex justify-center items-center mb-4">
                         <img
-                            className="w-12 h-12"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+                            className=" h-12"
+                            src={IMG.SHOCA_IMG}
                             alt="logo"
                         />
                     </a>
