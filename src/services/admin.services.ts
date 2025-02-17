@@ -1,4 +1,5 @@
 import { API } from "../api"
+import { AccountCreateProps } from "../components/modal-create-account"
 import axiosInstance from "./axiosInstance"
 
 export const adminGetAccountsService = async () => {
@@ -22,5 +23,17 @@ export const adminGetAccountService = async (id: string) => {
         }
     } catch (error) {
         console.log("adminGetAccountService-error: ", error)
+    }
+}
+
+export const adminCreateAccount = async (value: AccountCreateProps) => {
+    try {
+        const response:Account = await axiosInstance.post(`${API.ADMIN_CREATE_ACCOUNTS}`, value)
+        if (response) {
+            console.log("response: ", response)
+            return response 
+        }
+    } catch (error) {
+        console.log("adminCreateAccount-error: ", error)
     }
 }
