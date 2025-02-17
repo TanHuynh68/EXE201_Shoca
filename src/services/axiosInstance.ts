@@ -10,7 +10,7 @@ export const axiosInstance = axios.create({
     timeoutErrorMessage: 'Connection is timeout exceeded'
 })
 
-let isTokenExpired = false;
+// let isTokenExpired = false;
 
 axiosInstance.interceptors.request.use(
     (config) => {

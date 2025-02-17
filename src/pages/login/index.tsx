@@ -46,7 +46,7 @@ const LoginPage = () => {
                         Flowbite
                     </a>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8 text-black">
                             <Form
                                 form={form}
                                 layout="vertical"
@@ -61,7 +61,7 @@ const LoginPage = () => {
                                     name="email"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
                                 >
-                                    <Input type="email" placeholder="name@company.com" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <Input type="email" placeholder="name@company.com" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" />
                                 </Form.Item>
 
                                 <Form.Item<FieldType>
@@ -69,7 +69,7 @@ const LoginPage = () => {
                                     name="password"
                                     rules={[{ required: true, message: 'Please input your password!' }]}
                                 >
-                                    <Input type='password' placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <Input type='password' placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " />
                                 </Form.Item>
 
                                 <Form.Item name="remember" valuePropName="checked">
