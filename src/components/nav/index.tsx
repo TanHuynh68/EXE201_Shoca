@@ -42,7 +42,7 @@ const Navbar = () => {
       <Col span={8}>
         <Row>
           <Col span={6}>Explore</Col>
-          <Col span={6}>Jobs</Col>
+          <Col span={6}><a href="/job">Jobs</a></Col>
           <Col span={6}>Hire</Col>
           <Col span={6}>Assets</Col>
         </Row>

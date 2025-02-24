@@ -5,7 +5,9 @@ import moment from 'moment';
 import { Modal } from 'antd';
 import { adminGetAccountService } from '../../../services/admin.services';
 import { IMG } from '../../../consts/variable';
-import ModalCreateAccount, { AccountCreateProps } from '../../../components/modal-create-account';
+import ModalCreateAccount, { AccountCreateProps } from '../../../components/modal-create-update-account';
+import { EditOutlined } from '@ant-design/icons';
+import config from '../../../secret';
 
 const ManageUser = () => {
 
@@ -14,7 +16,7 @@ const ManageUser = () => {
     const [isDeleted, setIsDeleted] = useState<boolean | ''>('');
     const [gender, setGender] = useState<number | ''>('');
     const [keyword, setKeyword] = useState<string | ''>('');
-
+    const [accountNeedToUpdate, setAccountNeedToUpdate] = useState<Account>();
     //modal
 
     const [open, setOpen] = React.useState<boolean>(false);
@@ -23,7 +25,9 @@ const ManageUser = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm<AccountCreateProps>();
 
-    const showModal = () => {
+    const showModal = (account: Account) => {
+        setAccountNeedToUpdate(account);
+        console.log("account: ", account)
         setIsModalOpen(true);
     };
 
@@ -31,11 +35,29 @@ const ManageUser = () => {
         getAccounts()
     }, [])
 
+    useEffect(() => {
+      if(accountNeedToUpdate){
+        setValue()
+      }
+    }, [accountNeedToUpdate])
+
+    const setValue = () => {
+        form.setFieldsValue({
+            firstName: accountNeedToUpdate?.firstName || '',
+            lastName: accountNeedToUpdate?.lastName || '',
+            gender: accountNeedToUpdate?.gender || 0, // Giả sử 0 là giá trị mặc định cho gender
+            dateOfBirth: accountNeedToUpdate?.dateOfBirth ? moment(accountNeedToUpdate.dateOfBirth) : null,
+            address: accountNeedToUpdate?.address || '',
+            email: accountNeedToUpdate?.email || '',
+            phoneNumber: accountNeedToUpdate?.phoneNumber || '',
+            role: accountNeedToUpdate?.role || 1,
+        });
+    };
     const handleCancel = () => {
         form.resetFields()
         setIsModalOpen(false);
     };
-    
+
     const showLoading = (id: string) => {
         setOpen(true);
         setLoading(true);
@@ -125,12 +147,21 @@ const ManageUser = () => {
             dataIndex: 'role',
             key: 'role',
         },
+        {
+            title: 'Action',
+            render: (record: Account) => (
+                <div onClick={() => showModal(record)}>
+                    <EditOutlined className='text-blue-500' />
+                </div>
+            )
+        }
     ];
 
     return (
         <div>
             {/* Modal create account */}
             <ModalCreateAccount
+                accountNeedToUpdate={accountNeedToUpdate}
                 form={form}
                 isModalOpen={isModalOpen}
                 handleCancel={handleCancel}

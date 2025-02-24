@@ -1,5 +1,5 @@
 import { API } from "../api"
-import { AccountCreateProps } from "../components/modal-create-account"
+import { AccountCreateProps } from "../components/modal-create-update-account"
 import axiosInstance from "./axiosInstance"
 
 export const adminGetAccountsService = async () => {
@@ -35,5 +35,29 @@ export const adminCreateAccount = async (value: AccountCreateProps) => {
         }
     } catch (error) {
         console.log("adminCreateAccount-error: ", error)
+    }
+}
+
+export const adminUpdateAccount = async (value: AccountCreateProps, id: string) => {
+    try {
+        const response:Account = await axiosInstance.put(`${API.ADMIN_UPDATE_ACCOUNTS}/${id}`, value)
+        if (response) {
+            console.log("response: ", response)
+            return response 
+        }
+    } catch (error) {
+        console.log("adminUpdateAccount-error: ", error)
+    }
+}
+
+export const adminGetRecruiters = async () => {
+    try {
+        const response:Recruiter[] = await axiosInstance.get(API.ADMIN_GET_ALL_RECRUITER)
+        if (response) {
+            console.log("response: ", response)
+            return response
+        }
+    } catch (error) {
+        console.log("adminGetRecruiters-error: ", error)
     }
 }

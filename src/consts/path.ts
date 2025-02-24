@@ -20,14 +20,14 @@ export const PATH = {
     CUSTOMER_ORDER: "order",
     CUSTOMER_PAYMENT_METHOD: "payment-method",
     CUSTOMER_ATWORK_DETAIL: "/atworks/:id",
-    
+    CUSTOMER_ADD_NEW_SERVICE: "new-service",
     //admin
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: '',
     ADMIN_MANAGE_USER: 'manage-accounts',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
-
+    ADMIN_MANAGE_RECRUITER: "manage-recruiters",
     //Manager
     MANAGER_LOGIN: 'login',
     //Staff

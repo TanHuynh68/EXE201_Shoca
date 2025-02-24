@@ -47,7 +47,7 @@ const RegisterPage: React.FC = () => {
         const response = await registerService(values)
         console.log("response: ", response)
 
-        if ('errors' in response && typeof response === 'object') {
+        if ('errors' in response && typeof response === 'object' && response.errors != null ) {
             if (response.errors === null && 'message' in response && response.message) {
                 message.error(response.message + "")
             } else if (response.errors != null) {
@@ -56,7 +56,7 @@ const RegisterPage: React.FC = () => {
                 });
             }
         } else {
-            message.error(MESSAGE.REGISTER_SUCCESSFULLY)
+            message.success(MESSAGE.REGISTER_SUCCESSFULLY)
             navigate(PATH.LOGIN);
         }
     };
