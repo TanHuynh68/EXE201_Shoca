@@ -11,7 +11,9 @@ export const PATH = {
     INTERNAL_SERVER_ERROR: "internal-server-error",
     POST_JOB: "/post-job",
     POST: "/post",
+    HIRE_FREELANCER: "/hire-freelancers",
     VIEW_POST: "/view-post",
+    JOB_DETAIL: "/job/:id",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",

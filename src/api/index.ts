@@ -14,4 +14,8 @@ export const API = {
     CUSTOMER_GET_ATWORK: "/api/v1/artworks",
     //JOB
     CUSTOMER_GET_ALL_JOBS: "/api/v1/jobs",
+    CUSTOMER_GET_JOB_DETAIL: "/api/v1/jobs",
+    //FREELANCER
+    CREATE_NEW_SERICE: "/api/v1/freelancerservices",
+    GET_SERVICES: "/api/v1/freelancerservices",
 }

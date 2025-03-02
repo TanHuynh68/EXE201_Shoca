@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, Home, InternalServer, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import AtWorkDetail from "../pages/atwork-detail";
 
@@ -24,6 +24,8 @@ const AppRouter = () => {
             <Route path={PATH.POST} element={<PostPage />} />
             <Route path={PATH.VIEW_POST} element={<ViewPost />} />
             <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<AtWorkDetail />} />
+            <Route path={PATH.HIRE_FREELANCER} element={<HireFreelancer />} />
+            <Route path={PATH.JOB_DETAIL} element={<JobDetail />} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>
