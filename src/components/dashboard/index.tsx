@@ -44,6 +44,7 @@ const Dashboard: React.FC = () => {
             setItems([
                 getItem('Dashboard', '/admin/', <DesktopOutlined />),
                 getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
+                getItem('Manage Recruiters', '/admin/manage-recruiters', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/clinic-owner')) {
             setItems([
