@@ -18,4 +18,8 @@ export const API = {
     //FREELANCER
     CREATE_NEW_SERICE: "/api/v1/freelancerservices",
     GET_SERVICES: "/api/v1/freelancerservices",
+    GET_SERVICE: "/api/v1/freelancerservices",
+    EDIT_SERVICES: "/api/v1/freelancerservices",
+    GET_SERVICES_BY_USERID: "/api/v1/freelancerservices?UserId",
+    DELETE_SERVICE: "/api/v1/freelancerservices",
 }

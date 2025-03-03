@@ -23,6 +23,8 @@ export const PATH = {
     CUSTOMER_PAYMENT_METHOD: "payment-method",
     CUSTOMER_ATWORK_DETAIL: "/atworks/:id",
     CUSTOMER_ADD_NEW_SERVICE: "new-service",
+    CUSTOMER_EDIT_SERVICE: "edit-service/:id",
+    CUSTOMER_MANAGE_SERVICES: "manage-services",
     //admin
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: '',

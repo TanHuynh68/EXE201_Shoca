@@ -21,6 +21,14 @@ const Navbar = () => {
         </div>
       ),
     },
+    {
+      key: '2',
+      label: (
+        <Link to={"/customer/manage-services"} >
+          Freelancer
+        </Link>
+      ),
+    },
   ];
 
   const logout = () => {
