@@ -25,3 +25,15 @@ export const getAtWorkService = async (id: string) => {
         console.log("getAtWorkService-error: ", error)
     }
 }
+
+export const getAtWorksByCreator = async (id: string) => {
+    try {
+        const response = await axiosInstance.get(`${API.CUSTOMER_GET_ATWORKS_BY_CREATOR}/${id}`)
+        if (response) {
+            console.log("response: ", response)
+            return response.data 
+        }
+    } catch (error) {
+        console.log("getAtWorkService-error: ", error)
+    }
+}

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import AtWorkDetail from "../pages/atwork-detail";
 
@@ -35,8 +35,10 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_ORDER} element={<CustomerOrder />} />
                 <Route path={PATH.CUSTOMER_PAYMENT_METHOD} element={<PaymentMethod />} />
                 <Route path={PATH.CUSTOMER_REGISTER_PREMIUM} element={<RegisterPremium />} />
-                 <Route path={PATH.CUSTOMER_ADD_NEW_SERVICE} element={<AddNewService />} />
-                 <Route path={PATH.CUSTOMER_EDIT_SERVICE} element={<AddNewService />} />
+                <Route path={PATH.CUSTOMER_ADD_NEW_SERVICE} element={<AddNewService />} />
+                <Route path={PATH.CUSTOMER_EDIT_SERVICE} element={<AddNewService />} />
+                <Route path={PATH.CUSTOMER_MANAGE_PORTFOLIO} element={<CustomerManagePortfolio />} />
+                <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />

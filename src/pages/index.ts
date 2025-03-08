@@ -22,3 +22,5 @@ export { default as AddNewService } from './customer/freelancer-service/add-new-
 export { default as HireFreelancer } from './hire-freelancer'
 export { default as JobDetail } from './job-detail'
 export { default as ManageFreelancerSerivces } from './customer/freelancer-service/manage-freelancer-service'
+export { default as CustomerManagePortfolio } from './customer/portfolio/manage-portfolio'
+export { default as PortfolioDetail } from './customer/portfolio/detail'

@@ -29,6 +29,14 @@ const Navbar = () => {
         </Link>
       ),
     },
+    {
+      key: '3',
+      label: (
+        <Link to={"/customer/manage-portfolios"} >
+          Portfolio
+        </Link>
+      ),
+    },
   ];
 
   const logout = () => {

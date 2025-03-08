@@ -12,6 +12,7 @@ export const API = {
     //ATWORK
     CUSTOMER_GET_ALL_ATWORKS: "/api/v1/artworks",
     CUSTOMER_GET_ATWORK: "/api/v1/artworks",
+    CUSTOMER_GET_ATWORKS_BY_CREATOR: "/api/v1/artworks/images-by-creator",
     //JOB
     CUSTOMER_GET_ALL_JOBS: "/api/v1/jobs",
     CUSTOMER_GET_JOB_DETAIL: "/api/v1/jobs",
@@ -22,4 +23,7 @@ export const API = {
     EDIT_SERVICES: "/api/v1/freelancerservices",
     GET_SERVICES_BY_USERID: "/api/v1/freelancerservices?UserId",
     DELETE_SERVICE: "/api/v1/freelancerservices",
+    //PORTFOLIO
+    GET_PORTFOLIOS: "/api/v1/portfolios",
+    GET_PORTFOLIO: "/api/v1/portfolios",
 }
