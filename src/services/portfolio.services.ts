@@ -5,7 +5,7 @@ import axiosInstance from "./axiosInstance"
 
 export const getPortfolios = async () => {
     try {
-        const response:Portfolio[] = await axiosInstance.get(API.GET_PORTFOLIOS)
+        const response: Portfolio[] = await axiosInstance.get(API.GET_PORTFOLIOS)
         if (response) {
             console.log("response: ", response)
             return response
@@ -29,12 +29,19 @@ export const getPortfolio = async (id: string) => {
 
 export const createPortfolio = async (values: PortfolioData) => {
     try {
-        const response = await axiosInstance.post(`${API.GET_PORTFOLIO}`,{
-            values
+        const response = await axiosInstance.post(`${API.GET_PORTFOLIO}`, {
+            title: values.title,
+            description: values.description,
+            coverImageUrl: values.coverImageUrl,
+            userId: values.userId,
+            skills: values.skills,
+            experience: values.experience,
+            contactUrl: values.contactUrl,
+            artworkImageIds: values.artworkImageIds,
         })
         if (response) {
             console.log("response: ", response)
-            return response 
+            return response
         }
     } catch (error) {
         console.log("getPortfolio-error: ", error)

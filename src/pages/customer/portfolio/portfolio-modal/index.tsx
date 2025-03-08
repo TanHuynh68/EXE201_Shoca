@@ -4,11 +4,6 @@ import { useEffect, useState } from "react";
 import { getAtWorksByCreator } from "../../../../services/atworrk.services";
 import { uploadToCloudinary } from "../../../../consts/function";
 
-interface ImageItem {
-  artworkImageId: string;
-  imageUrl: string;
-}
-
 export interface PortfolioData {
   title: string;
   description: string;
@@ -17,7 +12,7 @@ export interface PortfolioData {
   skills: string;
   experience: string;
   contactUrl: string;
-  images: ImageItem[];
+  artworkImageIds: string[];
 }
 
 interface AtworksByCreatorProps {
@@ -48,7 +43,7 @@ const PortfolioModal = ({
     skills: "",
     experience: "",
     contactUrl: "",
-    images: [],
+    artworkImageIds: [],
   };
 
   useEffect(() => {
@@ -93,6 +88,7 @@ const PortfolioModal = ({
       console.log("formattedData: ", formattedData);
       onSubmit(formattedData);
       form.resetFields();
+      setFileList(null)
       onClose();
     } catch (error) {
       message.error("Đã có lỗi xảy ra!");
@@ -168,7 +164,7 @@ const PortfolioModal = ({
           <Input placeholder="Nhập link liên hệ" />
         </Form.Item>
 
-        <Form.Item name="images" label="Liên hệ" rules={[{ required: true }]}>
+        <Form.Item name="artworkImageId" label="Chọn artwork" rules={[{ required: true }]}>
           <Select
             mode="multiple"
             className="h-[230px]"
@@ -191,7 +187,7 @@ const PortfolioModal = ({
             options={
               atworks.map((item) => ({
                 label: <div className="h-[100px]"><img className="w-[100px] h-[100px]" src={item.fileUrl} alt="" /></div>,
-                value: JSON.stringify({artworkImageId: item.id, imageUrl: item.fileUrl}),
+                value: item.id,
                 data: item,
               }))
             }

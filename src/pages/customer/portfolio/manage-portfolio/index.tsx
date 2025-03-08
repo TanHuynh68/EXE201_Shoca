@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createPortfolio, getPortfolios } from "../../../../services/portfolio.services"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import PortfolioModal, { PortfolioData } from "../portfolio-modal";
 import { getUserDataFromLocalStorage } from "../../../../consts/variable";
@@ -44,17 +44,26 @@ const ManagePortfolio = () => {
         console.log("Dữ liệu portfolio:", data);
         setIsModalOpen(false);
         if(data){
-            const imagesSummit = data.images.map((item)=> JSON.parse(item))
-            const dataSubmit: PortfolioData = {
-                contactUrl: data.contactUrl,
-                coverImageUrl: data.coverImageUrl,
-                experience: data.experience,
-                images: data.images,
-            }
+            // console.log("data.images: ", data.images[0].artworkImageId)
+            // console.log(typeof data.images[0]); 
+            // const parsedImages = data.images.map((item) =>
+            //     typeof item === "string" ? JSON.parse(item) : item
+            //   );
+            // const dataSubmit: PortfolioData = {
+            //     contactUrl: data.contactUrl,
+            //     coverImageUrl: data.coverImageUrl,
+            //     experience: data.experience,
+            //     images: parsedImages,
+            //     skills: data.skills,
+            //     title: data.title,
+            //     userId: data.userId,
+            //     description: data.description,
+            // }
+            console.log("dataSubmit: ", data)
             const response = await createPortfolio(data);
             if(response){
                 console.log("handleCreatePortfolio: ",response)
-                navigate('/customer/manage-portfolios')
+                window.location.reload();
             }
         }
     };
