@@ -65,3 +65,15 @@ export const getAtWorksByCreator = async (id: string) => {
     }
 }
 
+
+export const deleteArtworkService = async (id: string) => {
+    try {
+        const response = await axiosInstance.delete(`${API.CUSTOMER_DELETE_ATWORK}/${id}`)
+        if (response) {
+            console.log("response: ", response)
+            return response.data as AtWork
+        }
+    } catch (error) {
+        console.log("getAtWorkService-error: ", error)
+    }
+}

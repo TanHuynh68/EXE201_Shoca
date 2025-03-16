@@ -12,10 +12,14 @@ export interface ArtworkData {
     price: number;
     creatorId: string;
     imageUrls: string[];
+    images?: string[];
     categoryIds: string[];
+    categories?: string[];
+    artWorkId?: string;
 }
 
 interface ArtworkModalProps {
+    artWorkId?: string;
     open: boolean;
     onClose: () => void;
     onSubmit: (data: ArtworkData) => void;
@@ -23,15 +27,16 @@ interface ArtworkModalProps {
     categories: Cate[]; // Categories for the select input
 }
 
-const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, onSubmit, initialData, categories }) => {
+const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, onSubmit, initialData, categories, artWorkId }) => {
     const [form] = Form.useForm();
     const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
     const [imageUrls, setImageUrls] = useState<string[]>([]); // Change to an array for multiple uploads
 
     useEffect(() => {
-        if (initialData) {
+        if (initialData && initialData.images) {
+            console.log("initialData: ", initialData)
             form.setFieldsValue(initialData);
-            setImageUrls(initialData.imageUrls); // Set initial image URLs if updating
+            setImageUrls(initialData.images); // Set initial image URLs if updating
             setThumbnailUrl(initialData.thumbnailUrl); // Set initial thumbnail URL if updating
         } else {
             form.resetFields();
@@ -41,12 +46,22 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
     }, [initialData, form]);
 
     const handleFinish = (values: ArtworkData) => {
-        if (user && user?.userId) {
+        if (user && user?.userId && !artWorkId && thumbnailUrl && imageUrls) {
             const valuesSubmit = {
                 ...values,
                 creatorId: user?.userId,
                 thumbnailUrl: thumbnailUrl,
                 imageUrls: imageUrls
+            }
+            onSubmit(valuesSubmit);
+
+        }else if(user && user?.userId && artWorkId && thumbnailUrl && imageUrls){
+            const valuesSubmit = {
+                ...values,
+                creatorId: user?.userId,
+                thumbnailUrl: thumbnailUrl,
+                imageUrls: imageUrls,
+                artWorkId: artWorkId
             }
             onSubmit(valuesSubmit);
         }
@@ -106,6 +121,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                 form={form}
                 layout="vertical"
                 onFinish={handleFinish}
+                
             >
                 <Form.Item
                     label="Title"
@@ -170,7 +186,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                     <Upload
                         listType="picture-card"
                         customRequest={handleUploadImages}
-                        fileList={imageUrls.map((url, index) => ({ uid: url, url }))}
+                        fileList={imageUrls?.map((url, index) => ({ uid: url, url }))}
                         onPreview={(file) => window.open(file.url, "_blank")}
                         showUploadList={{ showRemoveIcon: true }}
                         multiple={true}

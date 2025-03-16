@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Table, Popconfirm, message } from "antd";
 
-import { createArtworkService, getAtWorksService, updateArtworkService } from "../../../../services/atworrk.services";
+import { createArtworkService, deleteArtworkService, getAtWorksService, updateArtworkService } from "../../../../services/atworrk.services";
 import { getCategoriesService } from "../../../../services/category.services";
 import ModalCreateUpdateArtwork, { ArtworkData } from "../modal-create-update-artwork";
 import { priceUnit } from "../../../../consts/variable";
@@ -65,7 +65,7 @@ const ManageArtwork = () => {
 
     const handleUpdateArtwork = async (data: ArtworkData) => {
         if (currentArtwork) {
-            const response = await updateArtworkService(currentArtwork.id, data);
+            const response = await updateArtworkService(data?.artWorkId + "", data);
             if (response) {
                 message.success("Artwork updated successfully");
                 getAtWorks(); // Refresh the list
@@ -77,15 +77,15 @@ const ManageArtwork = () => {
         }
     };
 
-    // const handleDeleteArtwork = async (id: string) => {
-    //     const response = await deleteAtWorkService(id);
-    //     if (response) {
-    //         message.success("Artwork deleted successfully");
-    //         getAtWorks(); // Refresh the list
-    //     } else {
-    //         message.error("Failed to delete artwork");
-    //     }
-    // };
+    const handleDeleteArtwork = async (id: string) => {
+        const response = await deleteArtworkService(id);
+        if (response) {
+            message.success("Artwork deleted successfully");
+            getAtWorks(); // Refresh the list
+        } else {
+            message.error("Failed to delete artwork");
+        }
+    };
 
     const columns = [
         {
@@ -113,12 +113,12 @@ const ManageArtwork = () => {
         {
             title: 'Action',
             key: 'action',
-            render: (text: string, record: ArtworkData) => (
+            render: ( record: ArtworkData) => (
                 <>
-                    <Button type="link" onClick={() => { setCurrentArtwork(record); setIsModalOpen(true); }}>Update</Button>
+                    <Button type="link" onClick={() => showModalUpdate(record)}>Update</Button>
                     <Popconfirm
                         title="Are you sure to delete this artwork?"
-                        // onConfirm={() => handleDeleteArtwork(record.id)}
+                        onConfirm={() => handleDeleteArtwork(record?.id)}
                         okText="Yes"
                         cancelText="No"
                     >
@@ -129,6 +129,11 @@ const ManageArtwork = () => {
         },
     ];
 
+    const showModalUpdate = (record: ArtworkData)=>{
+        console.log("record: ", record)
+        setCurrentArtwork(record);
+        setIsModalOpen(true);
+    }
     return (
         <div className="mx-20 my-10">
             <div className="container mx-auto">
