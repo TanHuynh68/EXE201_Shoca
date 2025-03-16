@@ -11,6 +11,8 @@ export const API = {
     ADMIN_GET_ALL_RECRUITER: "/api/recruiter",
     //ATWORK
     CUSTOMER_GET_ALL_ATWORKS: "/api/v1/artworks",
+    CUSTOMER_CREATE_ATWORKS: "/api/v1/artworks",
+    CUSTOMER_UPDATE_ATWORKS: "/api/v1/artworks",
     CUSTOMER_GET_ATWORK: "/api/v1/artworks",
     CUSTOMER_GET_ATWORKS_BY_CREATOR: "/api/v1/artworks/images-by-creator",
     //JOB
@@ -27,4 +29,8 @@ export const API = {
     GET_PORTFOLIOS: "/api/v1/portfolios",
     GET_PORTFOLIO: "/api/v1/portfolios",
     DELETE_PORTFOLIO: "/api/v1/portfolios",
+    //CATEGORIES
+    GET_CATEGORIES: "/api/v1/categories",
+    GET_CATEGORIE: "/api/v1/categories",
+    DELETE_CATEGORIES: "/api/v1/categories",
 }

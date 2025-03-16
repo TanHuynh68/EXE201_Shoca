@@ -3,6 +3,7 @@ import { PATH } from "../consts"
 import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import AtWorkDetail from "../pages/atwork-detail";
+import ManageArtwork from "../pages/customer/artwork/manage-artwork";
 
 
 const AppRouter = () => {
@@ -39,6 +40,7 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_EDIT_SERVICE} element={<AddNewService />} />
                 <Route path={PATH.CUSTOMER_MANAGE_PORTFOLIO} element={<CustomerManagePortfolio />} />
                 <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
+                <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtwork />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />

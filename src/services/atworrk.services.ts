@@ -1,7 +1,34 @@
 import { API } from "../api"
+import { ArtworkData } from "../pages/customer/artwork/modal-create-update-artwork"
 import { AtWork } from "../pages/home"
 import axiosInstance from "./axiosInstance"
 
+export const createArtworkService = async (data: ArtworkData) => {
+    try {
+        const response = await axiosInstance.post(API.CUSTOMER_CREATE_ATWORKS,{
+            ...data
+        })
+        if (response) {
+            console.log("response: ", response)
+            return response
+        }
+    } catch (error) {
+        console.log("getAtWorksService-error: ", error)
+    }
+}
+export const updateArtworkService = async (id: string,data: ArtworkData) => {
+    try {
+        const response = await axiosInstance.post(`${API.CUSTOMER_CREATE_ATWORKS}/${id}`,{
+            ...data
+        })
+        if (response) {
+            console.log("response: ", response)
+            return response
+        }
+    } catch (error) {
+        console.log("getAtWorksService-error: ", error)
+    }
+}
 export const getAtWorksService = async () => {
     try {
         const response:AtWork[] = await axiosInstance.get(API.CUSTOMER_GET_ALL_ATWORKS)
@@ -37,3 +64,4 @@ export const getAtWorksByCreator = async (id: string) => {
         console.log("getAtWorkService-error: ", error)
     }
 }
+

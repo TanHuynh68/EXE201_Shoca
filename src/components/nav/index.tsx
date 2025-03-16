@@ -37,6 +37,14 @@ const Navbar = () => {
         </Link>
       ),
     },
+    {
+      key: '3',
+      label: (
+        <Link to={"/customer/manage-artworks"} >
+          Atwork
+        </Link>
+      ),
+    },
   ];
 
   const logout = () => {
