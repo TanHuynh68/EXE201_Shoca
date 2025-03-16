@@ -4,7 +4,7 @@ import { Button, Table, Popconfirm, message } from "antd";
 import { createArtworkService, deleteArtworkService, getAtWorksService, updateArtworkService } from "../../../../services/atworrk.services";
 import { getCategoriesService } from "../../../../services/category.services";
 import ModalCreateUpdateArtwork, { ArtworkData } from "../modal-create-update-artwork";
-import { priceUnit } from "../../../../consts/variable";
+import { getUserDataFromLocalStorage, priceUnit } from "../../../../consts/variable";
 
 export interface AtWork {
     id: string; // Assuming you have an ID for each artwork
@@ -36,12 +36,13 @@ const ManageArtwork = () => {
         getAtWorks();
         getCate();
     }, []);
-
+    const user = getUserDataFromLocalStorage()
     const getAtWorks = async () => {
         const response = await getAtWorksService();
         if (response) {
             const sortedAtWorks = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-            setAtWorks(sortedAtWorks);
+            const artworksFilter = sortedAtWorks.filter(item => item.createdBy === user?.userId)
+            setAtWorks(artworksFilter);
         }
         
     };

@@ -38,10 +38,18 @@ const Navbar = () => {
       ),
     },
     {
-      key: '3',
+      key: '4',
       label: (
         <Link to={"/customer/manage-artworks"} >
           Atwork
+        </Link>
+      ),
+    },
+    {
+      key: '5',
+      label: (
+        <Link to={"/customer/manage-jobs"} >
+          Job
         </Link>
       ),
     },

@@ -4,6 +4,7 @@ import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminM
 import { Dashboard } from "../components";
 import AtWorkDetail from "../pages/atwork-detail";
 import ManageArtwork from "../pages/customer/artwork/manage-artwork";
+import CustomerManageJob from "../pages/customer/job/manage-jobs";
 
 
 const AppRouter = () => {
@@ -41,6 +42,7 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_MANAGE_PORTFOLIO} element={<CustomerManagePortfolio />} />
                 <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
                 <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtwork />} />
+                <Route path={PATH.CUSTOMER_MANAGE_JOBS} element={<CustomerManageJob />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />
