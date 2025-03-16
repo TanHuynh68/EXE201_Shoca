@@ -26,4 +26,5 @@ export const API = {
     //PORTFOLIO
     GET_PORTFOLIOS: "/api/v1/portfolios",
     GET_PORTFOLIO: "/api/v1/portfolios",
+    DELETE_PORTFOLIO: "/api/v1/portfolios",
 }

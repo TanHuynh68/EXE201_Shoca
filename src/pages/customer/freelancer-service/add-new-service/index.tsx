@@ -12,7 +12,7 @@ export interface NewService {
     servicename: string;
     description: string;
     price: number;
-    imageUrl: string[];
+    imageUrl: string; // Change to a single string
     deliveryTime: number;
     numConcepts: number;
     numRevisions: number;
@@ -22,7 +22,7 @@ export interface NewService {
 const AddNewService = () => {
     const { id } = useParams();
     const [form] = useForm();
-    const [fileList, setFileList] = useState<string[]>([]); // Chuyển sang danh sách URL ảnh
+    const [fileUrl, setFileUrl] = useState<string | null>(null); // Change to a single URL
     const [service, setService] = useState<Service>();
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const AddNewService = () => {
         if (id) {
             const response = await getService(id);
             setService(response);
-            setFileList(response.imageUrl ? [response.imageUrl] : []); // Cập nhật danh sách ảnh nếu có
+            setFileUrl(response.imageUrl || null); // Set single image URL if exists
         }
     };
 
@@ -50,8 +50,8 @@ const AddNewService = () => {
     }
 
     // Xóa ảnh khỏi danh sách
-    const handleRemove = (fileUrl: string) => {
-        setFileList((prev) => prev.filter((url) => url !== fileUrl));
+    const handleRemove = () => {
+        setFileUrl(null); // Reset the file URL
     };
 
     // Xử lý upload ảnh
@@ -60,7 +60,7 @@ const AddNewService = () => {
             message.loading({ content: "Uploading...", key: "upload" });
             const url = await uploadToCloudinary(file);
             if (url) {
-                setFileList((prev) => [...prev, url]); // Lưu nhiều ảnh
+                setFileUrl(url); // Set the single image URL
                 message.success({ content: "Upload thành công!", key: "upload" });
                 onSuccess("ok");
             } else {
@@ -83,7 +83,7 @@ const AddNewService = () => {
                 deliveryTime: Number(values.deliveryTime),
                 numConcepts: Number(values.numConcepts),
                 numRevisions: Number(values.numRevisions),
-                imageUrl: fileList, // Cập nhật danh sách URL ảnh
+                imageUrl: fileUrl || "", // Use the single image URL
                 userId: user.userId,
             };
 
@@ -120,13 +120,13 @@ const AddNewService = () => {
                                 <Upload
                                     listType="picture-card"
                                     customRequest={handleUpload}
-                                    fileList={fileList.map((url) => ({ uid: url, url }))}
+                                    fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Show single image
                                     onPreview={(file) => window.open(file.url, "_blank")}
                                     showUploadList={{ showRemoveIcon: true }}
-                                    multiple={true}
-                                    onRemove={(file) => handleRemove(file.url)}
+                                    multiple={false} // Only allow single upload
+                                    onRemove={handleRemove}
                                 >
-                                    {fileList.length < 10 && ( // Giới hạn số ảnh tối đa (tùy chỉnh)
+                                    {!fileUrl && ( // Show upload button only if no image is uploaded
                                         <div className="flex flex-col items-center">
                                             <PlusOutlined className="text-xl" />
                                             <div style={{ marginTop: 8 }}>Thêm ảnh</div>
@@ -163,9 +163,9 @@ const AddNewService = () => {
                             {service && (
                                 <Form.Item label="Ảnh cũ">
                                     <div className="flex gap-2">
-                                        {service.imageUrl && service.imageUrl.map((url) => (
-                                            <Image key={url} src={url} width={100} height={100} />
-                                        ))}
+                                        {service.imageUrl && (
+                                            <Image src={service.imageUrl} width={100} height={100} />
+                                        )}
                                     </div>
                                 </Form.Item>
                             )}

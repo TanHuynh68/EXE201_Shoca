@@ -27,6 +27,18 @@ export const getPortfolio = async (id: string) => {
     }
 }
 
+export const deletePortfolio = async (id: string) => {
+    try {
+        const response = await axiosInstance.delete(`${API.DELETE_PORTFOLIO}/${id}`)
+        if (response) {
+            console.log("response: ", response)
+            return response.data as Portfolio
+        }
+    } catch (error) {
+        console.log("getPortfolio-error: ", error)
+    }
+}
+
 export const createPortfolio = async (values: PortfolioData) => {
     try {
         const response = await axiosInstance.post(`${API.GET_PORTFOLIO}`, {

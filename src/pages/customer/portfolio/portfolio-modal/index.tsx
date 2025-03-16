@@ -164,7 +164,7 @@ const PortfolioModal = ({
           <Input placeholder="Nhập link liên hệ" />
         </Form.Item>
 
-        <Form.Item name="artworkImageId" label="Chọn artwork" rules={[{ required: true }]}>
+        <Form.Item name="artworkImageIds" label="Chọn artwork" rules={[{ required: true }]}>
           <Select
             mode="multiple"
             className="h-[230px]"

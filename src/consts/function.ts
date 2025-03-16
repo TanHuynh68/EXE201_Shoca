@@ -18,3 +18,7 @@ export const uploadToCloudinary = async (file: File) => {
         return null;
     }
 };
+
+// export const priceUnit = (price: number)=>{
+//     return price.toLocaleString("vi-VN")
+// }
