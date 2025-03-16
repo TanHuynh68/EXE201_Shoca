@@ -4,6 +4,7 @@ import { Button, Table, Popconfirm, message } from "antd";
 import { createArtworkService, getAtWorksService, updateArtworkService } from "../../../../services/atworrk.services";
 import { getCategoriesService } from "../../../../services/category.services";
 import ModalCreateUpdateArtwork, { ArtworkData } from "../modal-create-update-artwork";
+import { priceUnit } from "../../../../consts/variable";
 
 export interface AtWork {
     id: string; // Assuming you have an ID for each artwork
@@ -30,6 +31,7 @@ const ManageArtwork = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentArtwork, setCurrentArtwork] = useState<ArtworkData | null>(null);
     const [cates, setCates] = useState<Cate[]>([])
+
     useEffect(() => {
         getAtWorks();
         getCate();
@@ -38,13 +40,15 @@ const ManageArtwork = () => {
     const getAtWorks = async () => {
         const response = await getAtWorksService();
         if (response) {
-            setAtWorks(response);
+            const sortedAtWorks = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+            setAtWorks(sortedAtWorks);
         }
+        
     };
-    const getCate = async ()=>{
+    const getCate = async () => {
         const response = await getCategoriesService();
         console.log("getCate: ", response)
-        if(response){
+        if (response) {
             setCates(response)
         }
     }
@@ -104,7 +108,7 @@ const ManageArtwork = () => {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            render: (price: number) => `$${price.toFixed(2)}`,
+            render: (price: number) => `$${priceUnit(price)}`,
         },
         {
             title: 'Action',
@@ -129,6 +133,7 @@ const ManageArtwork = () => {
         <div className="mx-20 my-10">
             <div className="container mx-auto">
                 <ModalCreateUpdateArtwork
+                categories={cates}
                     open={isModalOpen}
                     onClose={() => { setIsModalOpen(false); setCurrentArtwork(null); }}
                     onSubmit={currentArtwork ? handleUpdateArtwork : handleAddArtwork}

@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
-import { Modal, Form, Input, Button, InputNumber } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Modal, Form, Input, Button, InputNumber, message, Upload, Select } from 'antd';
+import { uploadToCloudinary } from '../../../../consts/function';
+import { PlusOutlined } from '@ant-design/icons';
+import { Cate } from '../manage-artwork';
+import { getUserDataFromLocalStorage } from '../../../../consts/variable';
 
 export interface ArtworkData {
     title: string;
@@ -16,21 +20,79 @@ interface ArtworkModalProps {
     onClose: () => void;
     onSubmit: (data: ArtworkData) => void;
     initialData?: ArtworkData | null; // For updating an existing artwork
+    categories: Cate[]; // Categories for the select input
 }
 
-const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, onSubmit, initialData }) => {
+const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, onSubmit, initialData, categories }) => {
     const [form] = Form.useForm();
+    const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
+    const [imageUrls, setImageUrls] = useState<string[]>([]); // Change to an array for multiple uploads
 
     useEffect(() => {
         if (initialData) {
             form.setFieldsValue(initialData);
+            setImageUrls(initialData.imageUrls); // Set initial image URLs if updating
+            setThumbnailUrl(initialData.thumbnailUrl); // Set initial thumbnail URL if updating
         } else {
             form.resetFields();
+            setImageUrls([]);
+            setThumbnailUrl(null);
         }
     }, [initialData, form]);
 
     const handleFinish = (values: ArtworkData) => {
-        onSubmit(values);
+        if (user && user?.userId) {
+            const valuesSubmit = {
+                ...values,
+                creatorId: user?.userId,
+                thumbnailUrl: thumbnailUrl,
+                imageUrls: imageUrls
+            }
+            onSubmit(valuesSubmit);
+        }
+    };
+    const user = getUserDataFromLocalStorage()
+    // Handle upload for thumbnail
+    const handleUploadThumbnail = async ({ file, onSuccess, onError }: any) => {
+        try {
+            message.loading({ content: "Uploading thumbnail...", key: "upload" });
+            const url = await uploadToCloudinary(file);
+            if (url) {
+                setThumbnailUrl(url);
+                message.success({ content: "Thumbnail uploaded successfully!", key: "upload" });
+                onSuccess("ok");
+            } else {
+                message.error({ content: "Thumbnail upload failed!", key: "upload" });
+                onError(new Error("Upload failed"));
+            }
+        } catch (error) {
+            message.error("An error occurred while uploading the thumbnail!");
+            onError(error);
+        }
+    };
+
+    // Handle upload for multiple images
+    const handleUploadImages = async ({ file, onSuccess, onError }: any) => {
+        try {
+            message.loading({ content: "Uploading images...", key: "upload" });
+            const url = await uploadToCloudinary(file);
+            if (url) {
+                setImageUrls((prev) => [...prev, url]); // Add new image URL to the array
+                message.success({ content: "Image uploaded successfully!", key: "upload" });
+                onSuccess("ok");
+            } else {
+                message.error({ content: "Image upload failed!", key: "upload" });
+                onError(new Error("Upload failed"));
+            }
+        } catch (error) {
+            message.error("An error occurred while uploading the image!");
+            onError(error);
+        }
+    };
+
+    // Remove an image URL from the list
+    const handleRemoveImage = (url: string) => {
+        setImageUrls((prev) => prev.filter((imageUrl) => imageUrl !== url));
     };
 
     return (
@@ -64,9 +126,24 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                 <Form.Item
                     label="Thumbnail URL"
                     name="thumbnailUrl"
-                    rules={[{ required: true, message: 'Please input the thumbnail URL!' }]}
+                    rules={[{ required: true, message: 'Please upload the thumbnail!' }]}
                 >
-                    <Input />
+                    <Upload
+                        listType="picture-card"
+                        customRequest={handleUploadThumbnail}
+                        fileList={thumbnailUrl ? [{ uid: thumbnailUrl, url: thumbnailUrl }] : []}
+                        onPreview={(file) => window.open(file.url, "_blank")}
+                        showUploadList={{ showRemoveIcon: true }}
+                        multiple={false}
+                        onRemove={handleRemoveImage}
+                    >
+                        {!thumbnailUrl && (
+                            <div className="flex flex-col items-center">
+                                <PlusOutlined className="text-xl" />
+                                <div style={{ marginTop: 8 }}>Upload Thumbnail</div>
+                            </div>
+                        )}
+                    </Upload>
                 </Form.Item>
 
                 <Form.Item
@@ -76,29 +153,46 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                 >
                     <InputNumber min={0} style={{ width: '100%' }} />
                 </Form.Item>
-
+                {/* 
                 <Form.Item
                     label="Creator ID"
                     name="creatorId"
                     rules={[{ required: true, message: 'Please input the creator ID!' }]}
                 >
                     <Input />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                     label="Image URLs"
                     name="imageUrls"
-                    rules={[{ required: true, message: 'Please input at least one image URL!' }]}
+                    rules={[{ required: true, message: 'Please upload at least one image!' }]}
                 >
-                    <Input.TextArea rows={4} placeholder="Enter image URLs separated by commas" />
+                    <Upload
+                        listType="picture-card"
+                        customRequest={handleUploadImages}
+                        fileList={imageUrls.map((url, index) => ({ uid: url, url }))}
+                        onPreview={(file) => window.open(file.url, "_blank")}
+                        showUploadList={{ showRemoveIcon: true }}
+                        multiple={true}
+                        onRemove={(file) => handleRemoveImage(file.url)}
+                    >
+                        <div className="flex flex-col items-center">
+                            <PlusOutlined className="text-xl" />
+                            <div style={{ marginTop: 8 }}>Upload Images</div>
+                        </div>
+                    </Upload>
                 </Form.Item>
 
                 <Form.Item
                     label="Category IDs"
                     name="categoryIds"
-                    rules={[{ required: true, message: 'Please input at least one category ID!' }]}
+                    rules={[{ required: true, message: 'Please select at least one category!' }]}
                 >
-                    <Input.TextArea rows={4} placeholder="Enter category IDs separated by commas" />
+                    <Select
+                        mode="multiple"
+                        placeholder="Select categories"
+                        options={categories.map(category => ({ label: category.name, value: category.id }))}
+                    />
                 </Form.Item>
 
                 <Form.Item>
