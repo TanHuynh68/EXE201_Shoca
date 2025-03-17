@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageJobs, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import AtWorkDetail from "../pages/atwork-detail";
 import ManageArtwork from "../pages/customer/artwork/manage-artwork";
@@ -52,6 +52,7 @@ const AppRouter = () => {
                 <Route path={PATH.ADMIN_MANAGE_USER} element={<AdminManageUser />} />
                 <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} />
                 <Route path={PATH.ADMIN_MANAGE_RECRUITER} element={<AdminManageRecruiter />} />
+                <Route path={PATH.ADMIN_MANAGE_JOBS} element={<AdminManageJobs />} />
                 {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>

@@ -33,6 +33,7 @@ export const PATH = {
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: '',
     ADMIN_MANAGE_USER: 'manage-accounts',
+    ADMIN_MANAGE_JOBS: 'manage-jobs',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
     ADMIN_MANAGE_RECRUITER: "manage-recruiters",
