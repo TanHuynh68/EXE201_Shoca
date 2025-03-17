@@ -1,11 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageJobs, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
-import AtWorkDetail from "../pages/atwork-detail";
-import ManageArtwork from "../pages/customer/artwork/manage-artwork";
-import CustomerManageJob from "../pages/customer/job/manage-jobs";
-
 
 const AppRouter = () => {
     // const { canAccess } = useRedirect();
@@ -25,7 +21,7 @@ const AppRouter = () => {
             <Route path={PATH.POST_JOB} element={<PostJob />} />
             <Route path={PATH.POST} element={<PostPage />} />
             <Route path={PATH.VIEW_POST} element={<ViewPost />} />
-            <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<AtWorkDetail />} />
+            <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<ArtWorkDetail />} />
             <Route path={PATH.HIRE_FREELANCER} element={<HireFreelancer />} />
             <Route path={PATH.JOB_DETAIL} element={<JobDetail />} />
 
@@ -41,7 +37,7 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_EDIT_SERVICE} element={<AddNewService />} />
                 <Route path={PATH.CUSTOMER_MANAGE_PORTFOLIO} element={<CustomerManagePortfolio />} />
                 <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
-                <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtwork />} />
+                <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtWork />} />
                 <Route path={PATH.CUSTOMER_MANAGE_JOBS} element={<CustomerManageJob />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
@@ -53,6 +49,7 @@ const AppRouter = () => {
                 <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} />
                 <Route path={PATH.ADMIN_MANAGE_RECRUITER} element={<AdminManageRecruiter />} />
                 <Route path={PATH.ADMIN_MANAGE_JOBS} element={<AdminManageJobs />} />
+                <Route path={PATH.ADMIN_MANAGE_PORTFOLIOS} element={<AdminManagePortfolios />} />
                 {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>

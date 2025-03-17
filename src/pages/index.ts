@@ -25,3 +25,7 @@ export { default as ManageFreelancerSerivces } from './customer/freelancer-servi
 export { default as CustomerManagePortfolio } from './customer/portfolio/manage-portfolio'
 export { default as PortfolioDetail } from './customer/portfolio/detail'
 export { default as AdminManageJobs } from './admin/job'
+export { default as ArtWorkDetail } from './atwork-detail'
+export { default as ManageArtWork } from './customer/artwork/manage-artwork'
+export { default as CustomerManageJob } from './customer/job/manage-jobs'
+export { default as AdminManagePortfolios } from './admin/manage-portfolio'
