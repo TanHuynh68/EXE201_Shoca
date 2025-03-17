@@ -36,6 +36,7 @@ export const PATH = {
     ADMIN_MANAGE_JOBS: 'manage-jobs',
     ADMIN_MANAGE_PORTFOLIOS: 'manage-portfolios',
     ADMIN_MANAGE_ARTWORKS: 'manage-artworks',
+    ADMIN_MANAGE_SERVICES: 'manage-services',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
     ADMIN_MANAGE_RECRUITER: "manage-recruiters",
@@ -43,4 +44,7 @@ export const PATH = {
     MANAGER_LOGIN: 'login',
     //Staff
     STAFF_LOGIN: 'login',
+    STAFF: '/staff/*',
+    STAFF_DASHBOARD: '',
+    STAFF_MANAGE_PACKAGES: "manage-packages",
   };

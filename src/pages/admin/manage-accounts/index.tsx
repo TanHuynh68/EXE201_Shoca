@@ -1,13 +1,14 @@
-import { Avatar, Button, Form, Input, Select, Table } from 'antd';
+import { Avatar, Button, Form, Input, message, Select, Table } from 'antd';
 import { adminGetAccountsService } from '../../../services';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { Modal } from 'antd';
-import { adminGetAccountService } from '../../../services/admin.services';
+import { adminCreateAccount, adminGetAccountService, adminUpdateAccount } from '../../../services/admin.services';
 import { IMG } from '../../../consts/variable';
-import ModalCreateAccount, { AccountCreateProps } from '../../../components/modal-create-update-account';
+import  { AccountCreateProps } from '../../../components/modal-create-update-account';
 import { EditOutlined } from '@ant-design/icons';
 import config from '../../../secret';
+import ModalCreateUpdateAccount from './modal-create-update-account';
 
 const ManageUser = () => {
 
@@ -16,7 +17,7 @@ const ManageUser = () => {
     const [isDeleted, setIsDeleted] = useState<boolean | ''>('');
     const [gender, setGender] = useState<number | ''>('');
     const [keyword, setKeyword] = useState<string | ''>('');
-    const [accountNeedToUpdate, setAccountNeedToUpdate] = useState<Account>();
+    const [accountNeedToUpdate, setAccountNeedToUpdate] = useState<AccountCreateProps | null>(null);
     //modal
 
     const [open, setOpen] = React.useState<boolean>(false);
@@ -25,8 +26,10 @@ const ManageUser = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm<AccountCreateProps>();
 
-    const showModal = (account: Account) => {
+    const showModal = (account?: AccountCreateProps) => {
+     if(account){
         setAccountNeedToUpdate(account);
+     }
         console.log("account: ", account)
         setIsModalOpen(true);
     };
@@ -36,9 +39,9 @@ const ManageUser = () => {
     }, [])
 
     useEffect(() => {
-      if(accountNeedToUpdate){
-        setValue()
-      }
+        if (accountNeedToUpdate) {
+            setValue()
+        }
     }, [accountNeedToUpdate])
 
     const setValue = () => {
@@ -53,6 +56,7 @@ const ManageUser = () => {
             role: accountNeedToUpdate?.role || 1,
         });
     };
+    
     const handleCancel = () => {
         form.resetFields()
         setIsModalOpen(false);
@@ -101,7 +105,33 @@ const ManageUser = () => {
     const handleChange = (value: boolean) => {
         setIsDeleted(value)
     };
-
+    const handleAddOrUpdateAccount = async (values: AccountCreateProps) => {
+        try {
+            if (accountNeedToUpdate) {
+                // Update existing account
+                const response = await adminUpdateAccount(values, accountNeedToUpdate?.id+""); // Assuming you have a service for updating accounts
+                if (response) {
+                    message.success("Account updated successfully");
+                } else {
+                    message.error("Failed to update account");
+                }
+            } else {
+                // Create new account
+                const response = await adminCreateAccount(values); // Assuming you have a service for creating accounts
+                if (response) {
+                    message.success("Account created successfully");
+                } else {
+                    message.error("Failed to create account");
+                }
+            }
+            // Refresh the account list after adding or updating
+            getAccounts();
+            setIsModalOpen(false); // Close the modal
+        } catch (error) {
+            console.error("Error while adding/updating account:", error);
+            message.error("An error occurred while processing your request");
+        }
+    };
     const columns = [
         {
             title: 'First Name',
@@ -160,11 +190,12 @@ const ManageUser = () => {
     return (
         <div>
             {/* Modal create account */}
-            <ModalCreateAccount
-                accountNeedToUpdate={accountNeedToUpdate}
+            <ModalCreateUpdateAccount
+                accountNeedToUpdate={accountNeedToUpdate || null}
                 form={form}
-                isModalOpen={isModalOpen}
-                handleCancel={handleCancel}
+    isModalOpen={isModalOpen}
+    handleCancel={handleCancel}
+    onSubmit={handleAddOrUpdateAccount}
             />
 
             <Modal />
@@ -246,7 +277,7 @@ const ManageUser = () => {
                     <Button type='primary'>Search</Button>
                 </div>
                 <div>
-                    <Button onClick={showModal} type='primary'>Create</Button>
+                    <Button onClick={()=>showModal()} type='primary'>Create</Button>
                 </div>
             </div>
             <Table dataSource={accounts} columns={columns} />

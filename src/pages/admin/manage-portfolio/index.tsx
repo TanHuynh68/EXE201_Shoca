@@ -35,7 +35,7 @@ const AdminManagePortfolio = () => {
         const response = await getPortfolios();
         if (response) {
             console.log("res: ", response);
-            setPortfolios(response.filter((item) => item.userId === user?.userId));
+            setPortfolios(response);
         }
     };
 

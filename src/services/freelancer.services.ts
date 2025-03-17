@@ -21,7 +21,7 @@ export const createNewSerivce = async (values: NewService) => {
 
 export const getServices = async () => {
     try {
-        const response: NewService[] = await axiosInstance.get(API.GET_SERVICES)
+        const response: Service[] = await axiosInstance.get(API.GET_SERVICES)
         if (response) {
             console.log("getServices: ", response)
             return response

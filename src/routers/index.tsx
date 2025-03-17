@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 
 const AppRouter = () => {
@@ -51,6 +51,13 @@ const AppRouter = () => {
                 <Route path={PATH.ADMIN_MANAGE_JOBS} element={<AdminManageJobs />} />
                 <Route path={PATH.ADMIN_MANAGE_PORTFOLIOS} element={<AdminManagePortfolios />} />
                 <Route path={PATH.ADMIN_MANAGE_ARTWORKS} element={<AdminManageArtworks />} />
+                <Route path={PATH.ADMIN_MANAGE_SERVICES} element={<AdminManageServices />} />
+                {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
+                <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path={PATH.STAFF} element={<Dashboard />}>
+                <Route path={PATH.STAFF_DASHBOARD} element={<StaffDashboard />} />{/* Staff */}
+                <Route path={PATH.STAFF_MANAGE_PACKAGES} element={<StaffManagePackages />} />
                 {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>

@@ -37,8 +37,7 @@ const AdminManageArtwork = () => {
         const response = await getAtWorksService();
         if (response) {
             const sortedAtWorks = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-            const artworksFilter = sortedAtWorks.filter(item => item.createdBy === user?.userId)
-            setAtWorks(artworksFilter);
+            setAtWorks(sortedAtWorks);
         }
         
     };
