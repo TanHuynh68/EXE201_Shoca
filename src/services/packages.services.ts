@@ -4,30 +4,28 @@ import { AtWork } from "../pages/home"
 import { ProPackage } from "../pages/staff/manage-packages"
 import axiosInstance from "./axiosInstance"
 
-export const createArtworkService = async (data: ArtworkData) => {
+export const createPackageService = async (data: ProPackage) => {
     try {
-        const response = await axiosInstance.post(API.CUSTOMER_CREATE_ATWORKS,{
-            ...data
-        })
+        const response = await axiosInstance.post(API.CREATE_PACKAGES, data)
         if (response) {
-            console.log("response: ", response)
+            console.log("createPackageService: ", response)
             return response
         }
     } catch (error) {
-        console.log("getAtWorksService-error: ", error)
+        console.log("createPackageService-error: ", error)
     }
 }
-export const updateArtworkService = async (id: string,data: ArtworkData) => {
+export const updatePackageService = async (id: string,data: ProPackage) => {
     try {
-        const response = await axiosInstance.post(`${API.CUSTOMER_CREATE_ATWORKS}/${id}`,{
+        const response = await axiosInstance.put(`${API.UPDATE_PACKAGES}/${id}`,{
             ...data
         })
         if (response) {
-            console.log("response: ", response)
+            console.log("updatePackageService: ", response)
             return response
         }
     } catch (error) {
-        console.log("getAtWorksService-error: ", error)
+        console.log("updatePackageService-error: ", error)
     }
 }
 export const getPackages = async () => {
@@ -42,39 +40,14 @@ export const getPackages = async () => {
     }
 }
 
-export const getAtWorkService = async (id: string) => {
+export const deletePackageService = async (id: string) => {
     try {
-        const response = await axiosInstance.get(`${API.CUSTOMER_GET_ATWORK}/${id}`)
+        const response = await axiosInstance.delete(`${API.DELETE_PACKAGES}/${id}`)
         if (response) {
-            console.log("response: ", response)
+            console.log("deletePackageService: ", response)
             return response.data as AtWork
         }
     } catch (error) {
-        console.log("getAtWorkService-error: ", error)
-    }
-}
-
-export const getAtWorksByCreator = async (id: string) => {
-    try {
-        const response = await axiosInstance.get(`${API.CUSTOMER_GET_ATWORKS_BY_CREATOR}/${id}`)
-        if (response) {
-            console.log("response: ", response)
-            return response.data 
-        }
-    } catch (error) {
-        console.log("getAtWorkService-error: ", error)
-    }
-}
-
-
-export const deleteArtworkService = async (id: string) => {
-    try {
-        const response = await axiosInstance.delete(`${API.CUSTOMER_DELETE_ATWORK}/${id}`)
-        if (response) {
-            console.log("response: ", response)
-            return response.data as AtWork
-        }
-    } catch (error) {
-        console.log("getAtWorkService-error: ", error)
+        console.log("deletePackageService-error: ", error)
     }
 }

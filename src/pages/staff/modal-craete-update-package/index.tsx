@@ -22,7 +22,6 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
         if (proPackage) {
             form.setFieldsValue({
                 ...proPackage,
-                features: proPackage.features.join(', '), // Convert array to comma-separated string for input
             });
         } else {
             form.resetFields();
@@ -31,7 +30,7 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
 
     const handleFinish = (values: ProPackageDataProps) => {
         // Split the features string back into an array
-        values.features = values.features.split(',').map(feature => feature.trim());
+        // values.features = values.features.split(',').map(feature => feature.trim());
         onSubmit(values);
     };
 
@@ -62,13 +61,16 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
                 >
                     <InputNumber min={0} style={{ width: '100%' }} />
                 </Form.Item>
-
                 <Form.Item
                     label="Features"
                     name="features"
                     rules={[{ required: true, message: 'Please input the features!' }]}
                 >
-                    <Input placeholder="Enter features separated by commas" />
+                     <Select
+                        mode="multiple"
+                        placeholder="Select categories"
+                        options={features.map(f => ({ label: f, value: f }))}
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -89,4 +91,5 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
     );
 };
 
+const features =["Priority Support", "Unlimited Access", "Custom Branding"]
 export default ModalCreateUpdateProPackageDataProps;

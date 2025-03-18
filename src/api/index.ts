@@ -38,4 +38,7 @@ export const API = {
     DELETE_CATEGORIES: "/api/v1/categories",
     //PACKAGES
     GET_PACKAGES: "/api/v1/pro-packages",
+    CREATE_PACKAGES: "/api/v1/pro-packages",
+    UPDATE_PACKAGES: "/api/v1/pro-packages",
+    DELETE_PACKAGES: "/api/v1/pro-packages",
 }

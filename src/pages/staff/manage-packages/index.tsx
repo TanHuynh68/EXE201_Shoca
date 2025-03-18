@@ -1,16 +1,18 @@
 export interface ProPackage {
-    id: string; // Unique identifier for the package
+    id?: string; // Unique identifier for the package
     name: string;
     price: number;
     features: string[];
     duration: string;
 }
-import React, { useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import { Table, Button, Popconfirm, message, Form } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
-import { getPackages } from '../../../services/packages.services';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { createPackageService, deletePackageService, getPackages, updatePackageService } from '../../../services/packages.services';
 import { priceUnit } from '../../../consts/variable';
 import ModalCreateUpdateProPackageDataProps from '../modal-craete-update-package';
+import { Cate } from '../../admin/manage-artworks';
 
 const ManageProPackage = () => {
     const [packages, setPackages] = useState<ProPackage[]>([]);
@@ -20,19 +22,20 @@ const ManageProPackage = () => {
 
     useEffect(() => {
         // Fetch the packages from the server or local storage
-        getPackagesFromStaff();
+        getPackagesFromStaff()
     }, []);
 
     const getPackagesFromStaff = async () => {
         // Replace this with your actual data fetching logic
         const response = await getPackages() // Example API call
-        setPackages(response);
+        const sortedPackages = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+        setPackages(sortedPackages);
     };
 
     const handleDelete = async (id: string) => {
         // Replace this with your actual delete logic
-        const response = await fetch(`/api/packages/${id}`, { method: 'DELETE' });
-        if (response.ok) {
+        const response = await deletePackageService(id);
+        if (response) {
             message.success("Package deleted successfully");
             setPackages(packages.filter(pkg => pkg.id !== id)); // Update the state
         } else {
@@ -67,17 +70,28 @@ const ManageProPackage = () => {
             title: 'Action',
             key: 'action',
             render: (text: string, record: ProPackage) => (
-                <Popconfirm
-                    title="Are you sure to delete this package?"
-                    onConfirm={() => handleDelete(record.id)}
-                    okText="Yes"
-                    cancelText="No"
-                >
-                    <Button type="link" icon={<DeleteOutlined />} danger />
-                </Popconfirm>
+                <div className='flex gap-2'>
+                    <EditOutlined onClick={()=>showModalUpdate(record)}  className='text-blue-500'/>
+                    <div>
+                        <Popconfirm
+                            title="Are you sure to delete this package?"
+                            onConfirm={() => handleDelete(record.id+"")}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button type="link" icon={<DeleteOutlined />} danger />
+                        </Popconfirm>
+                    </div>
+                </div>
             ),
         },
     ];
+
+    const showModalUpdate=(record: ProPackage)=>{
+        console.log("record: ", record)
+        setCurrentPackage(record)
+        setIsModalOpen(true)
+    }
 
     const handleCancel = () => {
         form.resetFields(); // Reset the form fields
@@ -86,26 +100,28 @@ const ManageProPackage = () => {
     };
 
     const handleAddOrUpdatePackage = async (values: ProPackage) => {
+        console.log("ProPackage:", values)
         try {
             if (currentPackage) {
                 // Update existing package
-                // const response = await adminUpdateProPackageService(currentPackage.id, values); // Replace with your actual update service
-                // if (response) {
-                //     message.success("Package updated successfully");
-                // } else {
-                //     message.error("Failed to update package");
-                // }
+                const response = await updatePackageService(currentPackage.id + "", values); // Replace with your actual update service
+                if (response) {
+                    message.success("Package updated successfully");
+                    setCurrentPackage(null)
+                } else {
+                    message.error("Failed to update package");
+                }
             } else {
                 // Create new package
-                // const response = await adminCreateProPackageService(values); // Replace with your actual create service
-                // if (response) {
-                //     message.success("Package created successfully");
-                // } else {
-                //     message.error("Failed to create package");
-                // }
+                const response = await createPackageService(values); // Replace with your actual create service
+                if (response) {
+                    message.success("Package created successfully");
+                } else {
+                    message.error("Failed to create package");
+                }
             }
             // Refresh the package list after adding or updating
-            getPackages(); // Call your function to fetch the updated list of packages
+            getPackagesFromStaff(); // Call your function to fetch the updated list of packages
             handleCancel(); // Close the modal
         } catch (error) {
             console.error("Error while adding/updating package:", error);
@@ -114,6 +130,9 @@ const ManageProPackage = () => {
     };
     return (
         <div className="container">
+            <div className="mb-4">
+                <Button onClick={() => { setIsModalOpen(true); setCurrentPackage(null); }} type="primary">Add Package</Button>
+            </div>
             <ModalCreateUpdateProPackageDataProps
                 proPackage={currentPackage} // Pass the current package for editing or null for creating
                 form={form}
@@ -126,7 +145,7 @@ const ManageProPackage = () => {
                 dataSource={packages}
                 columns={columns}
                 rowKey="id" // Assuming 'id' is the unique identifier for each package
-                pagination={{ pageSize: 5 }} // Adjust pagination as needed
+
             />
         </div>
     );
