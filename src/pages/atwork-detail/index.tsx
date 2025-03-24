@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAtWorkService } from "../../services/atworrk.services"
 import { AtWork } from "../home";
-import { IMG } from "../../consts/variable";
+import { IMG, priceUnit } from "../../consts/variable";
 import { useParams } from "react-router-dom";
 
 const AtWorkDetail = () => {
@@ -24,7 +24,7 @@ const AtWorkDetail = () => {
     }
 
     return (
-        <div className="mt-10 container mx-auto">
+        <div className="my-10 container mx-auto">
             <div className="grid grid-cols-12 gap-10">
                 <div className="col-span-7 justify-items-center">
                     <div>
@@ -39,7 +39,7 @@ const AtWorkDetail = () => {
                         {atwork?.description}
                     </div>
                     <div className="mt-5">
-                        {atwork?.price}
+                        {priceUnit(atwork?.price ||0)}
                     </div>
                 </div>
             </div>

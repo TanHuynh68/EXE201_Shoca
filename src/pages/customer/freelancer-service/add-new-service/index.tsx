@@ -12,47 +12,56 @@ export interface NewService {
     servicename: string;
     description: string;
     price: number;
-    imageUrl: string;
+    imageUrl: string; // Change to a single string
     deliveryTime: number;
     numConcepts: number;
     numRevisions: number;
     userId: string;
+    id?:string
 }
 
 const AddNewService = () => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [form] = useForm();
-    const [file, setFile] = useState<any>(null);
-    const [service, setService] = useState<Service>()
+    const [fileUrl, setFileUrl] = useState<string | null>(null); // Change to a single URL
+    const [service, setService] = useState<Service>();
     const navigate = useNavigate();
+
     useEffect(() => {
         getServicebyClient();
-    }, [id])
+    }, [id]);
+
     const getServicebyClient = async () => {
         if (id) {
             const response = await getService(id);
-            setService(response)
+            setService(response);
+            setFileUrl(response.imageUrl || null); // Set single image URL if exists
         }
-    }
+    };
+
     if (service) {
-        form.setFieldsValue(
-            {
-                servicename: service.servicename,
-                description: service.description,
-                price: service.price,
-                imageUrl: service.imageUrl,
-                deliveryTime: service.deliveryTime,
-                numConcepts: service.numConcepts,
-                numRevisions: service.numRevisions
-            }
-        )
+        form.setFieldsValue({
+            servicename: service.servicename,
+            description: service.description,
+            price: service.price,
+            deliveryTime: service.deliveryTime,
+            numConcepts: service.numConcepts,
+            numRevisions: service.numRevisions
+        });
     }
+
+    // Xóa ảnh khỏi danh sách
+    const handleRemove = () => {
+        setFileUrl(null); // Reset the file URL
+    };
+
+    // Xử lý upload ảnh
     const handleUpload = async ({ file, onSuccess, onError }: any) => {
         try {
             message.loading({ content: "Uploading...", key: "upload" });
             const url = await uploadToCloudinary(file);
             if (url) {
-                setFile({ url, name: file.name });
+                setFileUrl(url); // Set the single image URL
                 message.success({ content: "Upload thành công!", key: "upload" });
                 onSuccess("ok");
             } else {
@@ -75,7 +84,7 @@ const AddNewService = () => {
                 deliveryTime: Number(values.deliveryTime),
                 numConcepts: Number(values.numConcepts),
                 numRevisions: Number(values.numRevisions),
-                imageUrl: file?.url || "",
+                imageUrl: fileUrl || "", // Use the single image URL
                 userId: user.userId,
             };
 
@@ -85,20 +94,19 @@ const AddNewService = () => {
                 response = await createNewSerivce(newService);
                 if (response) {
                     message.success("Tạo dịch vụ mới thành công");
-                    navigate('/customer/manage-services')
+                    navigate('/customer/manage-services');
                 } else {
-                    message.error("Tạo dịch vụ mới thất bại");       
+                    message.error("Tạo dịch vụ mới thất bại");
                 }
             } else {
                 response = await editSerivce(newService, id);
                 if (response) {
-                    message.success("Chỉnh sửa vụ thành công");
-                    navigate('/customer/manage-services')
+                    message.success("Chỉnh sửa dịch vụ thành công");
+                    navigate('/customer/manage-services');
                 } else {
-                    message.error("Chỉnh sửa vụ thất bại");
+                    message.error("Chỉnh sửa dịch vụ thất bại");
                 }
             }
-
         }
     };
 
@@ -113,14 +121,16 @@ const AddNewService = () => {
                                 <Upload
                                     listType="picture-card"
                                     customRequest={handleUpload}
-                                    fileList={file ? [file] : []}
-                                    onPreview={() => window.open(file?.url, "_blank")}
-                                    showUploadList={{ showRemoveIcon: false }}
+                                    fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Show single image
+                                    onPreview={(file) => window.open(file.url, "_blank")}
+                                    showUploadList={{ showRemoveIcon: true }}
+                                    multiple={false} // Only allow single upload
+                                    onRemove={handleRemove}
                                 >
-                                    {!file && (
+                                    {!fileUrl && ( // Show upload button only if no image is uploaded
                                         <div className="flex flex-col items-center">
                                             <PlusOutlined className="text-xl" />
-                                            <div style={{ marginTop: 8 }}>Upload</div>
+                                            <div style={{ marginTop: 8 }}>Thêm ảnh</div>
                                         </div>
                                     )}
                                 </Upload>
@@ -130,7 +140,9 @@ const AddNewService = () => {
                         {/* Form Nhập Thông Tin */}
                         <div className="col-span-7">
                             <div className="text-xl font-bold">New Service</div>
-                            <p className="mt-2 text-gray-600">Add a service to let potential clients know what you're available for, and help them easily book you.</p>
+                            <p className="mt-2 text-gray-600">
+                                Add a service to let potential clients know what you're available for, and help them easily book you.
+                            </p>
                             <Form.Item className="mt-5" label="Service Name" name="servicename">
                                 <Input placeholder="Enter service name" />
                             </Form.Item>
@@ -149,13 +161,19 @@ const AddNewService = () => {
                             <Form.Item label="Number of Revisions" name="numRevisions">
                                 <Input type="number" placeholder="Enter number of revisions" />
                             </Form.Item>
-                            {
-                                service && <Form.Item label="Old" name="imageUrl">
-                                    <Image src={service?.imageUrl} />
+                            {service && (
+                                <Form.Item label="Ảnh cũ">
+                                    <div className="flex gap-2">
+                                        {service.imageUrl && (
+                                            <Image src={service.imageUrl} width={100} height={100} />
+                                        )}
+                                    </div>
                                 </Form.Item>
-                            }
+                            )}
                             <Form.Item label={null}>
-                                <Button type="primary" htmlType="submit">Submit</Button>
+                                <Button type="primary" htmlType="submit">
+                                    Submit
+                                </Button>
                             </Form.Item>
                         </div>
                     </div>

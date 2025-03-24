@@ -35,9 +35,10 @@ const JobPage = () => {
       setJobs(response);
     }
   }
+
   return (
     <div className='mx-5'>
-      <div className='justify-items-center mt-10 container mx-auto'>
+      <div className='justify-items-center my-10 container mx-auto'>
         <div className='grid xl:grid-cols-3 lg:grid-cols-2 gap-4 '>
           {
             jobs.map((item) => (

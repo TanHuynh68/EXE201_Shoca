@@ -28,7 +28,9 @@ export const adminGetAccountService = async (id: string) => {
 
 export const adminCreateAccount = async (value: AccountCreateProps) => {
     try {
-        const response:Account = await axiosInstance.post(`${API.ADMIN_CREATE_ACCOUNTS}`, value)
+        const response:Account = await axiosInstance.post(`${API.ADMIN_CREATE_ACCOUNTS}`, {
+            ...value
+        })
         if (response) {
             console.log("response: ", response)
             return response 
@@ -39,6 +41,7 @@ export const adminCreateAccount = async (value: AccountCreateProps) => {
 }
 
 export const adminUpdateAccount = async (value: AccountCreateProps, id: string) => {
+    console.log("values: ", value)
     try {
         const response:Account = await axiosInstance.put(`${API.ADMIN_UPDATE_ACCOUNTS}/${id}`, value)
         if (response) {

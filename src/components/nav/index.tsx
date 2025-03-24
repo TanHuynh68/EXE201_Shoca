@@ -29,6 +29,30 @@ const Navbar = () => {
         </Link>
       ),
     },
+    {
+      key: '3',
+      label: (
+        <Link to={"/customer/manage-portfolios"} >
+          Portfolio
+        </Link>
+      ),
+    },
+    {
+      key: '4',
+      label: (
+        <Link to={"/customer/manage-artworks"} >
+          Atwork
+        </Link>
+      ),
+    },
+    {
+      key: '5',
+      label: (
+        <Link to={"/customer/manage-jobs"} >
+          Job
+        </Link>
+      ),
+    },
   ];
 
   const logout = () => {

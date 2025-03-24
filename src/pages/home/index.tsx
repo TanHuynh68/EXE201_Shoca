@@ -39,7 +39,6 @@ const Home = () => {
             setAtWorks(response);
         }
     }
-
     return (
         <div className='container mx-auto'>
             <div className='h-60 flex items-center justify-center'>
