@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
 import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
+import HireFreelancerDetail from "../pages/hire-freelancer-detail";
 
 const AppRouter = () => {
     // const { canAccess } = useRedirect();
@@ -24,7 +25,7 @@ const AppRouter = () => {
             <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<ArtWorkDetail />} />
             <Route path={PATH.HIRE_FREELANCER} element={<HireFreelancer />} />
             <Route path={PATH.JOB_DETAIL} element={<JobDetail />} />
-
+            <Route path={PATH.HIRE_FREELANCER_DETAIL} element={<HireFreelancerDetail/>} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>

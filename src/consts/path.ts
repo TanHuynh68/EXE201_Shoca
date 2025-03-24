@@ -14,6 +14,7 @@ export const PATH = {
     HIRE_FREELANCER: "/hire-freelancers",
     VIEW_POST: "/view-post",
     JOB_DETAIL: "/job/:id",
+    HIRE_FREELANCER_DETAIL: "/hire-freelancer/:id",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",

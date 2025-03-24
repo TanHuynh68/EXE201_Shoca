@@ -17,6 +17,7 @@ export interface NewService {
     numConcepts: number;
     numRevisions: number;
     userId: string;
+    id?:string
 }
 
 const AddNewService = () => {
