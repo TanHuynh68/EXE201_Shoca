@@ -54,6 +54,7 @@ const Dashboard: React.FC = () => {
             setItems([
                 getItem('Dashboard', '/staff/', <DesktopOutlined />),
                 getItem('Manage Packages', '/staff/manage-packages', <UserOutlined />),
+                getItem('Check Ai', '/staff/check-ai-artworks', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/doctor')) {
             setItems([

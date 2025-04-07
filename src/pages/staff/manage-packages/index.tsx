@@ -129,7 +129,7 @@ const ManageProPackage = () => {
         }
     };
     return (
-        <div className="container">
+        <div className="container mx-auto">
             <div className="mb-4">
                 <Button onClick={() => { setIsModalOpen(true); setCurrentPackage(null); }} type="primary">Add Package</Button>
             </div>
