@@ -3,7 +3,6 @@ import type { ColumnsType } from 'antd/es/table';
 import { getReports, updateStatusReportService } from '../../../services/report.services';
 import { useEffect, useState } from 'react';
 import { priceUnit } from '../../../consts/variable';
-import { get } from 'lodash';
 
 interface ReportData {
     id: string;

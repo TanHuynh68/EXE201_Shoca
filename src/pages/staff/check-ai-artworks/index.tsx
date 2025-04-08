@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, Table, Popconfirm, message, Select, Modal, Form } from "antd";
-import ModalCreateUpdateArtwork, { ArtworkData } from "../../customer/artwork/modal-create-update-artwork";
+import { Button, Table, message, Select, Modal, Form } from "antd";
+import  { ArtworkData } from "../../customer/artwork/modal-create-update-artwork";
 import { priceUnit } from "../../../consts/variable";
-import { createArtworkService, deleteArtworkService, getAtWorksService, updateArtworkService } from "../../../services/atworrk.services";
-import { getCategoriesService } from "../../../services/category.services";
+import { getAtWorksService } from "../../../services/atworrk.services";
 import { staffCheckAi } from "../../../services/staff.services";
 
 
@@ -39,7 +38,6 @@ const CheckAiArtWork = () => {
     const [atworks, setAtWorks] = useState<AtWork[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentArtwork, setCurrentArtwork] = useState<ArtworkData | null>(null);
-    const [cates, setCates] = useState<Cate[]>([])
     const [form] = Form.useForm();
 
     const handleSubmit = async (values: any) => {
@@ -59,7 +57,6 @@ const CheckAiArtWork = () => {
 
     useEffect(() => {
         getAtWorks();
-        getCate();
     }, []);
 
     const getAtWorks = async () => {
@@ -71,13 +68,6 @@ const CheckAiArtWork = () => {
             setAtWorks(sortedAtWorks);
         }
     };
-    const getCate = async () => {
-        const response = await getCategoriesService();
-        console.log("getCate: ", response)
-        if (response) {
-            setCates(response)
-        }
-    }
 
     const columns = [
         {

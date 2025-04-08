@@ -6,7 +6,9 @@ import { MESSAGE } from '../../consts';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { IMG } from '../../consts/variable';
-
+interface Decode{
+    role: string
+}
 const LoginPage = () => {
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ const LoginPage = () => {
             const response = await loginService(values.email, values.password)
             console.log("response: ", response)
             if (response && response.data.accessToken) {
-                const decodedToken = jwtDecode(response.data.accessToken);
+                const decodedToken: Decode = jwtDecode(response.data.accessToken);
                 console.log("decodedToken: ", decodedToken)
 
                 if (decodedToken?.role === 'Customer') {
