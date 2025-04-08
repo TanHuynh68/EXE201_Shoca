@@ -79,17 +79,6 @@ const CheckAiArtWork = () => {
         }
     }
 
-
-    const handleDeleteArtwork = async (id: string) => {
-        const response = await deleteArtworkService(id);
-        if (response) {
-            message.success("Artwork deleted successfully");
-            getAtWorks(); // Refresh the list
-        } else {
-            message.error("Failed to delete artwork");
-        }
-    };
-
     const columns = [
         {
             title: 'Title',
@@ -116,7 +105,7 @@ const CheckAiArtWork = () => {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            render: (price: number) => `$${priceUnit(price)}`,
+            render: (price: number) => `${priceUnit(price)}`,
         },
         {
             title: 'Action',

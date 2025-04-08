@@ -52,4 +52,5 @@ export const PATH = {
     STAFF_DASHBOARD: '',
     STAFF_MANAGE_PACKAGES: "manage-packages",
     STAFF_CHECK_AI: "check-ai-artworks",
+    STAFF_MANAGE_REPORTS: "manage-reports",
   };

@@ -16,7 +16,6 @@ import { PATH } from '../../consts';
 const Dashboard: React.FC = () => {
     const [items, setItems] = useState<MenuItem[]>([]);
     const navigate = useNavigate(); // Hook to navigate programmatically
-    
     type MenuItem = Required<MenuProps>['items'][number];
 
     const user =  getUserDataFromLocalStorage();
@@ -55,6 +54,7 @@ const Dashboard: React.FC = () => {
                 getItem('Dashboard', '/staff/', <DesktopOutlined />),
                 getItem('Manage Packages', '/staff/manage-packages', <UserOutlined />),
                 getItem('Check Ai', '/staff/check-ai-artworks', <UserOutlined />),
+                getItem('Manage Reports', '/staff/manage-reports', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/doctor')) {
             setItems([
@@ -72,6 +72,7 @@ const Dashboard: React.FC = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user"); 
         navigate(PATH.HOME)
+        window.location.reload()
         message.success("Logout Successfully")
     }
     const menuItems = [

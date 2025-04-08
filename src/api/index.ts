@@ -46,4 +46,8 @@ export const API = {
     DELETE_PACKAGES: "/api/v1/pro-packages",
     //PAYMENT
     CREATE_PAYMENT: "/api/payment/create",
+    //PACKAGES
+    CREATE_REPORT: "/api/Report",
+    STAFF_GET_REPORTS: "/api/Report",
+    STAFF_CHANGE_STATUS_REPORT: "/api/Report",
 }  
