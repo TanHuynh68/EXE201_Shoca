@@ -10,7 +10,7 @@ COPY . .
 # Build production
 RUN npm run build
 
-EXPOSE 8000
+EXPOSE 8080
 
 # Chạy server production (vite preview)
 CMD ["npx", "vite", "preview", "--host"]
