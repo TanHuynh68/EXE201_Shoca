@@ -18,6 +18,7 @@ const AtWorkDetail = () => {
 
     const getAtWorkDetail = async () => {
         const response = await getAtWorkService(id + "");
+        console.log("getAtWorkDetail: ", response)
         if (response) {
             setAtWork(response);
         }

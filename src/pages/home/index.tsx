@@ -62,6 +62,7 @@ const Home = () => {
 
     const getAtWorks = async () => {
         const response = await getAtWorksService();
+        console.log('getAtWorks: ', response)
         if (response) {
             setAtWorks(response);
         }
