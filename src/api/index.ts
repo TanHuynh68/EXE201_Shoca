@@ -2,6 +2,7 @@
 export const API = {
     //ACCOUNT
     GET_PROFILE: "/api/v1/accounts",
+    EDIT_PROFILE: "/api/v1/accounts",
     //AUTH
     LOGIN: "/api/v1/authentication/login",
     REGISTER: "/api/v1/authentication/register",
