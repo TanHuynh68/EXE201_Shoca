@@ -81,7 +81,7 @@ const Navbar = () => {
         </Row>
       </Col>
       <Col span={8}>
-        <Search placeholder="Search..." onSearch={onSearch} style={{ width: 300 }} />
+        
       </Col>
       <Col span={4}>
         <Row>
