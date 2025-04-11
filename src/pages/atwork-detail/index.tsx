@@ -11,7 +11,7 @@ import moment from 'moment';
 import { Comment } from '@ant-design/compatible';
 import 'moment/locale/vi';
 moment.locale('vi');
-import { CustomerGetRatings, customerRating, customerReply } from "../../services/ratings.services"
+import { customerDeleteComment, CustomerGetRatings, customerRating, customerReply } from "../../services/ratings.services"
 // Define the Comment interface based on the provided structure
 interface CommentType {
     comments: string
@@ -49,7 +49,8 @@ const AtWorkDetail = () => {
     const [replyTo, setReplyTo] = useState<string | null>(null)
     const [replyText, setReplyText] = useState("")
     const user = getUserDataFromLocalStorage()
-    console.log("user: ",user)
+    const [deleting, setDeleting] = useState(false)
+    console.log("user: ", user)
     useEffect(() => {
         if (id) {
             console.log("id: ", id)
@@ -171,6 +172,24 @@ const AtWorkDetail = () => {
         )
     }
 
+    const handleDeleteComment = async (id: string) => {
+        console.log('id: ', id)
+        setDeleting(true)
+        const response = await customerDeleteComment(id)
+        if (response) {
+            message.success('Xóa comment thành công')
+            fetchComments()
+            setDeleting(false)
+        }
+    }
+
+    if (deleting)
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                Loading ...
+            </div>
+        )
+        
     return (
         <div className="my-10 container mx-auto">
             <div className="grid grid-cols-12 gap-10">
@@ -201,7 +220,7 @@ const AtWorkDetail = () => {
             <div className=" justify-items-center ">
                 <div className="mt-16 w-[1200px]" >
                     {
-                     user && user?.userId !='' &&  <div>
+                        user && user?.userId != '' && <div>
                             <h2 className="text-2xl font-semibold mb-6">Bình luận</h2>
 
                             {/* Comment Form */}
@@ -248,13 +267,25 @@ const AtWorkDetail = () => {
                                         </Tooltip>
                                     }
                                     actions={user && [
-                                        <span
-                                            key="comment-reply-to"
-                                            onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
-                                            className="text-blue-500 cursor-pointer"
-                                        >
-                                            Trả lời
-                                        </span>,
+                                        <div className="flex gap-2">
+                                            <span
+                                                key="comment-reply-to"
+                                                onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
+                                                className="text-blue-500 cursor-pointer"
+                                            >
+
+                                                <Button >Trả lời</Button>
+                                            </span>
+                                            <div>
+                                                <span
+                                                    key="delete-comment"
+                                                    onClick={() => handleDeleteComment(comment.id)}
+                                                    className="text-red-500 cursor-pointer"
+                                                >
+                                                    <Button > Xóa</Button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     ]}
                                 >
                                     {/* Render replies */}

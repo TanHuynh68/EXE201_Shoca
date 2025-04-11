@@ -40,3 +40,15 @@ export const customerReply = async (values: any) => {
         console.log("customerReply-error: ", error)
     }
 }
+
+export const customerDeleteComment = async (id: string) => {
+    try {
+        const response = await axiosInstance.delete(`${API.DELETE_RATINGS}/${id}`)
+        if (response) {
+            console.log("customerDeleteComment: ", response)
+            return response
+        }
+    } catch (error) {
+        console.log("customerDeleteComment-error: ", error)
+    }
+}

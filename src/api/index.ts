@@ -57,4 +57,5 @@ export const API = {
     GET_RATINGS: "/api/v1/ratings",
     CREATE_RATINGS: "/api/v1/ratings",
     REP_RATINGS: "/api/v1/ratings/comments",
+    DELETE_RATINGS: "/api/v1/ratings",
 }  
