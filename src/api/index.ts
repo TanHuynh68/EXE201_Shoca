@@ -53,4 +53,8 @@ export const API = {
     CREATE_REPORT: "/api/Report",
     STAFF_GET_REPORTS: "/api/Report",
     STAFF_CHANGE_STATUS_REPORT: "/api/Report",
+    //RATING
+    GET_RATINGS: "/api/v1/ratings",
+    CREATE_RATINGS: "/api/v1/ratings",
+    REP_RATINGS: "/api/v1/ratings/comments",
 }  
