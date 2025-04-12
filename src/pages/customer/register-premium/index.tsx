@@ -1,5 +1,5 @@
 import Title from 'antd/es/typography/Title'
-import {  PremiumIcon, PremiumOptionCard } from '../../../components'
+import { PremiumIcon, PremiumOptionCard } from '../../../components'
 import { Col, Row } from 'antd'
 
 
@@ -14,20 +14,55 @@ const RegisterPremiumPage = () => {
         <p className='text-orange-300 ' >Nơi bạn thể hiện đẳng cấp và sự chuyên nghiệp.</p>
       </Title>
 
-      <Row>
-        <Col span={24}>
+      <Row gutter={10}>
+        <Col span={8}>
           <div className='justify-items-center'>
-          <PremiumOptionCard
-            price={10000}
-            month={1}
-            description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
-            interest={[
-              'Cho phép đổi màu BG của profile',
-              'Tăng data upload',
-              'Tăng đề xuất',
-              'Có khung và huy hiệu PRE'
-            ]}
-          />
+            <PremiumOptionCard
+              packageId={'5500e9cf-13c1-48cf-117a-08dd79456e0e'}
+              price={10000}
+              month={1}
+              description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
+              interest={[
+                'Cho phép đổi màu BG của profile',
+                'Tăng data upload',
+                'Tăng đề xuất',
+                'Có khung và huy hiệu PRE'
+              ]}
+            />
+          </div>
+        </Col>
+        <Col span={8}>
+          <div className='justify-items-center'>
+            <PremiumOptionCard
+              packageId={'f5df7093-f19f-437c-6045-08dd79d8e6cd'}
+              price={40000}
+              month={1}
+              description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
+              interest={[
+                'Cho phép đổi màu BG của profile',
+                'Tăng data upload',
+                'Tăng đề xuất',
+                'Có khung và huy hiệu PRE',
+                'Tiết kiệm lên tới 20.000 vnd'
+              ]}
+            />
+          </div>
+        </Col>
+        <Col span={8}>
+          <div className='justify-items-center'>
+            <PremiumOptionCard
+              packageId={'90c4f47e-b861-4912-6046-08dd79d8e6cd'}
+              price={70000}
+              month={1}
+              description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
+              interest={[
+                'Cho phép đổi màu BG của profile',
+                'Tăng data upload',
+                'Tăng đề xuất',
+                'Có khung và huy hiệu PRE',
+                'Tiết kiệm lên tới 50.000 vnd'
+              ]}
+            />
           </div>
         </Col>
       </Row>

@@ -38,10 +38,10 @@ const Navbar = () => {
       key: "view-profile",
       label: (
         <Link to={'/customer/profile'}>
-        <div className="flex items-center gap-3 py-2">
-          <EyeOutlined />
-          <span>Xem tất cả trang cá nhân</span>
-        </div>
+          <div className="flex items-center gap-3 py-2">
+            <EyeOutlined />
+            <span>Xem tất cả trang cá nhân</span>
+          </div>
         </Link>
       ),
       onClick: () => {
@@ -68,8 +68,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <QuestionCircleOutlined />
           <Link to={"/customer/manage-portfolios"} >
-          Portfolio
-        </Link>
+            Portfolio
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -82,8 +82,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <MoonOutlined />
           <Link to={"/customer/manage-artworks"} >
-          Atwork
-        </Link>
+            Atwork
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -96,8 +96,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <CommentOutlined />
           <Link to={"/customer/manage-jobs"} >
-          Job
-        </Link>
+            Job
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -125,7 +125,14 @@ const Navbar = () => {
 
   const goToRegister = () => {
     navigate('/register')
+    window.location.reload()
   }
+
+  const goToLogin = () => {
+    navigate('/login')
+    window.location.reload()
+  }
+  
   return (
     <Row className='bg-purple-700 flex items-center text-white py-1'>
       <Col span={4}>
@@ -149,14 +156,14 @@ const Navbar = () => {
           {
             !isLogin ? <>
               <Col span={12}>
-                <div onClick={() => goToRegister()}>
-                  Sign up
+                <div className='cursor-pointer' onClick={() => goToRegister()}>
+                  Đăng Ký
                 </div>
               </Col>
               <Col span={12}>
-                <Link to={"/login"}>
-                  Log in
-                </Link>
+                <div className='cursor-pointer' onClick={() => goToLogin()}>
+                  Đăng Nhập
+                </div>
               </Col>
             </>
               :

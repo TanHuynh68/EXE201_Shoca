@@ -1,5 +1,6 @@
 import { API } from "../api"
 import { AccountCreateProps } from "../components/modal-create-update-account"
+import { DashboardData } from "../pages/admin/dashboard"
 import axiosInstance from "./axiosInstance"
 
 export const adminGetAccountsService = async () => {
@@ -69,7 +70,7 @@ export const adminGetRecruiters = async () => {
 
 export const adminGetStatistics = async () => {
     try {
-        const response = await axiosInstance.get(API.ADMIN_GET_ALL_STATISTICS)
+        const response: DashboardData = await axiosInstance.get(API.ADMIN_GET_ALL_STATISTICS)
         if (response) {
             console.log("adminGetStatistics: ", response)
             return response

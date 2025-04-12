@@ -11,9 +11,10 @@ interface iPremiumOptionCard {
     month: number;
     description: string;
     interest: string[];// Quyền lợi
+    packageId: string
 }
 
-const PremiumOptionCard = ({ price, month, description, interest }: iPremiumOptionCard) => {
+const PremiumOptionCard = ({ price, month, description, interest, packageId }: iPremiumOptionCard) => {
     // const navigate = useNavigate()
     // const user = getUserDataFromLocalStorage()
     // const createPayment = async () => {
@@ -46,7 +47,7 @@ const PremiumOptionCard = ({ price, month, description, interest }: iPremiumOpti
                  }
                 </div>
                 <div className='text-center mt-20 mb-5'>
-                    <PremiumButton text='Đăng Ký Ngay' />
+                    <PremiumButton packageId={packageId} text='Đăng Ký Ngay' />
                 </div>
             </Card>
         </div>

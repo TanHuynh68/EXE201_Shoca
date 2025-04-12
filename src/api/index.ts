@@ -50,6 +50,7 @@ export const API = {
     DELETE_PACKAGES: "/api/v1/pro-packages",
     //PAYMENT
     CREATE_PAYMENT: "/api/payment/create",
+    RETURN_PAYMENT: "/api/payment/return",
     //PACKAGES
     CREATE_REPORT: "/api/Report",
     STAFF_GET_REPORTS: "/api/Report",
