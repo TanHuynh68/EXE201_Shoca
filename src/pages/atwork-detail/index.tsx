@@ -189,7 +189,7 @@ const AtWorkDetail = () => {
                 Loading ...
             </div>
         )
-        
+
     return (
         <div className="my-10 container mx-auto">
             <div className="grid grid-cols-12 gap-10">
@@ -271,19 +271,22 @@ const AtWorkDetail = () => {
                                             <span
                                                 key="comment-reply-to"
                                                 onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
-                                                className="text-blue-500 cursor-pointer"
+                                                className=" cursor-pointer"
                                             >
 
-                                                <Button >Trả lời</Button>
+                                                <Button className="text-blue-500">Trả lời</Button>
                                             </span>
                                             <div>
-                                                <span
-                                                    key="delete-comment"
-                                                    onClick={() => handleDeleteComment(comment.id)}
-                                                    className="text-red-500 cursor-pointer"
-                                                >
-                                                    <Button > Xóa</Button>
-                                                </span>
+                                                {
+                                                    comment.customerId === user.userId &&
+                                                    <span
+                                                        key="delete-comment"
+                                                        onClick={() => handleDeleteComment(comment.id)}
+                                                        className=" cursor-pointer"
+                                                    >
+                                                        <Button className="text-red-500"> Xóa</Button>
+                                                    </span>
+                                                }
                                             </div>
                                         </div>
                                     ]}
