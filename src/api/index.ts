@@ -12,6 +12,7 @@ export const API = {
     ADMIN_CREATE_ACCOUNTS: "/api/v1/accounts",
     ADMIN_UPDATE_ACCOUNTS: "/api/v1/accounts",
     ADMIN_GET_ALL_RECRUITER: "/api/recruiter",
+    ADMIN_GET_ALL_STATISTICS: "/api/v1/statistics",
     //ATWORK
     CUSTOMER_GET_ALL_ATWORKS: "/api/v1/artworks",
     CUSTOMER_CREATE_ATWORKS: "/api/v1/artworks",

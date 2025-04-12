@@ -37,10 +37,12 @@ const Navbar = () => {
     {
       key: "view-profile",
       label: (
+        <Link to={'/customer/profile'}>
         <div className="flex items-center gap-3 py-2">
           <EyeOutlined />
           <span>Xem tất cả trang cá nhân</span>
         </div>
+        </Link>
       ),
       onClick: () => {
         // Handle view profile action

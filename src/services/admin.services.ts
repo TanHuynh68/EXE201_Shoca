@@ -66,3 +66,16 @@ export const adminGetRecruiters = async () => {
         console.log("adminGetRecruiters-error: ", error)
     }
 }
+
+export const adminGetStatistics = async () => {
+    try {
+        const response = await axiosInstance.get(API.ADMIN_GET_ALL_STATISTICS)
+        if (response) {
+            console.log("adminGetStatistics: ", response)
+            return response
+        }
+    } catch (error) {
+        console.log("adminGetStatistics-error: ", error)
+    }
+}
+
