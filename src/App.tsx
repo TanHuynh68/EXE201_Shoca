@@ -11,9 +11,9 @@ function App() {
 
   const isNotUseHeaderFooter = useMemo(() => {
     return (
-      location.pathname.includes(roles.ADMIN) ||
-      location.pathname.includes(roles.STAFF) ||
-      location.pathname.includes(roles.MANAGER) ||
+      location.pathname.includes(roles.ADMIN.toLowerCase()) ||
+      location.pathname.includes(roles.STAFF.toLowerCase()) ||
+      location.pathname.includes(roles.MANAGER.toLowerCase()) ||
       location.pathname.includes(PATH.LOGIN) ||
       location.pathname.includes(PATH.REGISTER) ||
       location.pathname.includes(PATH.FORGOT_PASSWORD)

@@ -46,17 +46,17 @@ import { PATH, roles } from "../consts";
     const Redirect = () => {
         switch (userRole) {
             case roles.ADMIN:
-                if (!path.includes(roles.ADMIN || PATH.LOGIN || PATH.REGISTER)) {
+                if (!path.includes(roles.ADMIN.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
                     navigate(PATH.ADMIN_HOME)
                 }
                 break;
-            case roles:
-                if (!path.includes(roles.STAFF || PATH.LOGIN || PATH.REGISTER)) {
+            case roles.STAFF:
+                if (!path.includes(roles.STAFF.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
                     navigate(PATH.STAFF);
                 }
                 break
             case roles.CUSTOMER:
-                if (!path.includes(roles.CUSTOMER || PATH.LOGIN || PATH.REGISTER)) {
+                if (path.includes(roles.STAFF.toLowerCase()|| roles.ADMIN.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
                     navigate(PATH.HOME);
                 }
                 break;

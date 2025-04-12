@@ -30,7 +30,7 @@ const Navbar = () => {
 
   useEffect(() => {
     fetchUserProfile()
-  }, [user])
+  }, [])
 
   const fetchUserProfile = async () => {
     try {
