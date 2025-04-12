@@ -1,11 +1,32 @@
 import Title from 'antd/es/typography/Title'
 import { PremiumIcon, PremiumOptionCard } from '../../../components'
-import { Col, Row } from 'antd'
+import { Col, message, Row } from 'antd'
+import { useEffect, useState } from 'react'
+import { CustomerGetProfile } from '../../../services/account.services'
+import { getUserDataFromLocalStorage } from '../../../consts/variable'
+import { UserProfile } from '../profile'
 
 
 const RegisterPremiumPage = () => {
+  const user = getUserDataFromLocalStorage()
+  const [profile, setProfile] = useState<UserProfile>()
 
+  useEffect(() => {
+    fetchUserProfile()
+  }, [])
+  const fetchUserProfile = async () => {
 
+    try {
+      const userData = await CustomerGetProfile(user?.userId + "")
+      if (userData) {
+        console.log("userData: ", userData)
+        setProfile(userData?.data)
+      }
+    } catch (error) {
+      console.error("Không thể tải thông tin hồ sơ:", error)
+      message.error("Không thể tải thông tin hồ sơ")
+    }
+  }
   return (
     <div className='container mx-auto pb-10'>
       <PremiumIcon />
@@ -18,6 +39,7 @@ const RegisterPremiumPage = () => {
         <Col span={8}>
           <div className='justify-items-center'>
             <PremiumOptionCard
+              userProfile={profile}
               packageId={'5500e9cf-13c1-48cf-117a-08dd79456e0e'}
               price={10000}
               month={1}
@@ -34,6 +56,7 @@ const RegisterPremiumPage = () => {
         <Col span={8}>
           <div className='justify-items-center'>
             <PremiumOptionCard
+              userProfile={profile}
               packageId={'f5df7093-f19f-437c-6045-08dd79d8e6cd'}
               price={40000}
               month={1}
@@ -51,6 +74,7 @@ const RegisterPremiumPage = () => {
         <Col span={8}>
           <div className='justify-items-center'>
             <PremiumOptionCard
+              userProfile={profile}
               packageId={'90c4f47e-b861-4912-6046-08dd79d8e6cd'}
               price={70000}
               month={1}

@@ -24,7 +24,7 @@ import { uploadToCloudinary } from "../../../consts/function"
 const { Title, Text } = Typography
 const { Option } = Select
 
-interface UserProfile {
+export interface UserProfile {
     firstName: string
     lastName: string
     gender: string | number
@@ -44,7 +44,8 @@ interface UserProfile {
     modifiedBy: string
     deletionDate: string | null
     deletedBy: string | null
-    isDeleted: boolean
+    isDeleted: boolean,
+    purchasedPackages: PurchasedPackage[]
 }
 
 interface EditableProfile {
@@ -60,6 +61,13 @@ interface EditableProfile {
     role: number
 }
 
+interface PurchasedPackage {
+    id: string;
+    proPackageId: string;
+    packageStatus: string; // You can adjust possible values
+    startDate: string; // or Date if you parse it
+    endDate: string;   // or Date
+}
 const ProfilePage: React.FC = () => {
     const [profile, setProfile] = useState<UserProfile | null>(null)
     const [isEditing, setIsEditing] = useState(false)
@@ -74,21 +82,21 @@ const ProfilePage: React.FC = () => {
     }, [])
 
     useEffect(() => {
-       if(profile){
-        form.setFieldsValue({
-            firstName: profile.firstName,
-            lastName: profile.lastName,
-            gender: profile.gender === "Male" ? 0 : profile.gender === "Female" ? 1 : 2,
-            dateOfBirth: profile.dateOfBirth ? moment(profile.dateOfBirth) : null,
-            address: profile.address,
-            avatarUrl: profile.avatarUrl,
-            personalWebsiteUrl: profile.personalWebsiteUrl,
-            portfolioUrl: profile.portfolioUrl,
-            phoneNumber: profile.phoneNumber,
-            role: typeof profile.role === "string" ? (profile.role === "Admin" ? 0 : 1) : profile.role,
-        })
-        setFileUrl(profile.avatarUrl)
-       }
+        if (profile) {
+            form.setFieldsValue({
+                firstName: profile.firstName,
+                lastName: profile.lastName,
+                gender: profile.gender === "Male" ? 0 : profile.gender === "Female" ? 1 : 2,
+                dateOfBirth: profile.dateOfBirth ? moment(profile.dateOfBirth) : null,
+                address: profile.address,
+                avatarUrl: profile.avatarUrl,
+                personalWebsiteUrl: profile.personalWebsiteUrl,
+                portfolioUrl: profile.portfolioUrl,
+                phoneNumber: profile.phoneNumber,
+                role: typeof profile.role === "string" ? (profile.role === "Admin" ? 0 : 1) : profile.role,
+            })
+            setFileUrl(profile.avatarUrl)
+        }
     }, [profile])
 
     const fetchUserProfile = async () => {
@@ -177,22 +185,22 @@ const ProfilePage: React.FC = () => {
 
     // Handle upload for multiple images
     const handleUpload = async ({ file, onSuccess, onError }: any) => {
-           try {
-               message.loading({ content: "Uploading...", key: "upload" });
-               const url = await uploadToCloudinary(file);
-               if (url) {
-                   setFileUrl(url); // Set the single image URL
-                   message.success({ content: "Upload thành công!", key: "upload" });
-                   onSuccess("ok");
-               } else {
-                   message.error({ content: "Upload thất bại!", key: "upload" });
-                   onError(new Error("Upload failed"));
-               }
-           } catch (error) {
-               message.error("Đã xảy ra lỗi khi upload!");
-               onError(error);
-           }
-       };
+        try {
+            message.loading({ content: "Uploading...", key: "upload" });
+            const url = await uploadToCloudinary(file);
+            if (url) {
+                setFileUrl(url); // Set the single image URL
+                message.success({ content: "Upload thành công!", key: "upload" });
+                onSuccess("ok");
+            } else {
+                message.error({ content: "Upload thất bại!", key: "upload" });
+                onError(new Error("Upload failed"));
+            }
+        } catch (error) {
+            message.error("Đã xảy ra lỗi khi upload!");
+            onError(error);
+        }
+    };
 
     const normFile = (e: any) => {
         if (Array.isArray(e)) {
