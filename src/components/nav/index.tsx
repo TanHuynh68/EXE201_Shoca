@@ -168,9 +168,9 @@ const Navbar = () => {
       <Col span={8}>
         <Row>
           <Col span={6}>Explore</Col>
-          <Col span={6}><a href="/job">Jobs</a></Col>
-          <Col span={6}><a href="/customer/premium">Premium</a></Col>
-          <Col span={6}><a href="/hire-freelancers">Hire Freelancers</a></Col>
+          <Col span={6}><a href="/job">Công việc</a></Col>
+           {isLogin && <Col  span={6}><a href="/customer/premium">Premium</a></Col>}
+          <Col span={6}><a href="/hire-freelancers">Thuê Freelancers</a></Col>
         </Row>
       </Col>
       <Col span={8}>

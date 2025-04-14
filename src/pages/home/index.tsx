@@ -6,6 +6,7 @@ import { ExclamationOutlined, SearchOutlined } from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
 import { getUserDataFromLocalStorage, IMG } from '../../consts/variable'
 import { createReportService } from '../../services/report.services'
+import { Creator } from '../atwork-detail'
 const { Title, Text } = Typography;
 
 export interface AtWork {
@@ -27,7 +28,8 @@ export interface AtWork {
     deletedBy: string | null;
     isDeleted: boolean;
     images: string[];
-    status: string
+    status: string;
+    creator: Creator
 }
 
 const Home = () => {
