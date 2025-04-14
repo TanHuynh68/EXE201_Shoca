@@ -134,7 +134,7 @@ const Home = () => {
         <div className='container mx-auto pb-10'>
             <div className='mt-20 flex items-center justify-center'>
                 <div>
-                    <p className='text-7xl font-thin m-0'>"God is a design"</p>
+                    <p className='text-7xl font-thin m-0'>"Tác phẩm nghệ thuật"</p>
                     <p className='text-center mt-2'>Thiết kế là nghệ thuật, portfolio là câu chuyện</p>
                 </div>
             </div>
