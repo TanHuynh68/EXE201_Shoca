@@ -124,7 +124,7 @@ const ManageArtwork = () => {
                         okText="Yes"
                         cancelText="No"
                     >
-                        <Button type="link" danger>Delete</Button>
+                        <Button type="link" danger>XóaXóa</Button>
                     </Popconfirm>
                 </>
             ),
@@ -146,9 +146,9 @@ const ManageArtwork = () => {
                     onSubmit={currentArtwork ? handleUpdateArtwork : handleAddArtwork}
                     initialData={currentArtwork || null}
                 />
-                <div className="text-3xl font-bold text-center mb-4">Manage Artwork</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý tác phẩm</div>
                 <div className="mb-4">
-                    <Button onClick={() => { setIsModalOpen(true); setCurrentArtwork(null); }} type="primary">Add Artwork</Button>
+                    <Button onClick={() => { setIsModalOpen(true); setCurrentArtwork(null); }} type="primary">Thêm tác phẩm</Button>
                 </div>
                 <Table
                     dataSource={atworks}

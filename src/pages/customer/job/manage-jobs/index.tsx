@@ -82,7 +82,7 @@ const CustomerManageJob = () => {
             dataIndex: 'fileAttachment',
             key: 'fileAttachment',
             render: (file: string) => (
-                <a href={file} target="_blank" rel="noopener noreferrer">View File</a>
+                <a href={file} target="_blank" rel="noopener noreferrer">Xem tập tin</a>
             ),
         },
         {
@@ -134,7 +134,7 @@ const CustomerManageJob = () => {
                     initialData={currentJob}
                     categories={cates}
                 />
-                <div className="text-3xl font-bold text-center mb-4">Manage Jobs</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý công việc</div>
                 <div className="mb-4">
                     <Button onClick={() => { setIsModalOpen(true); setCurrentJob(null); }} type="primary" icon={<PlusOutlined />}>
                         Add Job

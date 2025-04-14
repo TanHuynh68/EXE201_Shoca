@@ -139,9 +139,9 @@ const AddNewService = () => {
 
                         {/* Form Nhập Thông Tin */}
                         <div className="col-span-7">
-                            <div className="text-xl font-bold">New Service</div>
+                            <div className="text-xl font-bold">Dịch vụ mới</div>
                             <p className="mt-2 text-gray-600">
-                                Add a service to let potential clients know what you're available for, and help them easily book you.
+                            Thêm một dịch vụ để khách hàng tiềm năng biết bạn sẵn sàng phục vụ những gì và giúp họ dễ dàng đặt lịch với bạn.
                             </p>
                             <Form.Item className="mt-5" label="Service Name" name="servicename">
                                 <Input placeholder="Enter service name" />
@@ -172,7 +172,7 @@ const AddNewService = () => {
                             )}
                             <Form.Item label={null}>
                                 <Button type="primary" htmlType="submit">
-                                    Submit
+                                    Xác nhận
                                 </Button>
                             </Form.Item>
                         </div>

@@ -116,7 +116,7 @@ const LoginPage = () => {
                                     <span>Tiếp tục với Google</span>
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Bạn chưa có tài khoản? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Đăng kýký</a>
+                                    Bạn chưa có tài khoản? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Đăng ký</a>
                                 </p>
                             </form>
                         </div>

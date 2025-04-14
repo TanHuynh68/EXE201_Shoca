@@ -165,7 +165,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                         {!thumbnailUrl && (
                             <div className="flex flex-col items-center">
                                 <PlusOutlined className="text-xl" />
-                                <div style={{ marginTop: 8 }}>Upload Thumbnail</div>
+                                <div style={{ marginTop: 8 }}>Tải lên hình thu nhỏ</div>
                             </div>
                         )}
                     </Upload>
@@ -203,7 +203,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                     >
                         <div className="flex flex-col items-center">
                             <PlusOutlined className="text-xl" />
-                            <div style={{ marginTop: 8 }}>Upload Images</div>
+                            <div style={{ marginTop: 8 }}>Tải lên hình ảnh</div>
                         </div>
                     </Upload>
                 </Form.Item>
