@@ -160,7 +160,7 @@ const AtWorkDetail = () => {
                 renderItem={(reply) => (
                     <Comment
                         author={<a>{reply.customerName}</a>}
-                        avatar={<Avatar icon={<UserOutlined />} />}
+                        avatar={<Avatar src={reply.avatarUrl} icon={<UserOutlined />} />}
                         content={<p>{reply?.commentText}</p>}
                         datetime={
                             <Tooltip title={moment(reply.creationDate).add(7, 'hours').format("YYYY-MM-DD HH:mm:ss")}>
@@ -276,7 +276,7 @@ const AtWorkDetail = () => {
                             <li>
                                 <Comment
                                     author={<a>{comment.customerName}</a>}
-                                    avatar={<Avatar icon={<UserOutlined />} />}
+                                    avatar={<Avatar src={comment.avatarUrl} icon={<UserOutlined/>}/>}
                                     content={<p>{comment.comments}</p>}
                                     datetime={
                                         <Tooltip title={moment(comment.creationDate).add(7, 'hours').format("YYYY-MM-DD HH:mm:ss")}>
