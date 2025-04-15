@@ -144,7 +144,7 @@ const CheckAiArtWork = () => {
                         </Form.Item>
                     </Form>
                 </Modal>
-                <div className="text-3xl font-bold text-center mb-4">Manage Artwork</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý tác phẩm nghệ thuật</div>
                 <Table
                     dataSource={atworks}
                     columns={columns}
