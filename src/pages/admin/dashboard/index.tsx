@@ -84,7 +84,7 @@ const Dashboard: React.FC = () => {
                 <Title level={2} className="m-0">
                     Tổng Quan Hệ Thống
                 </Title>
-                <Space>
+                {/* <Space>
                     <Segmented
                         options={[
                             { label: "Tuần này", value: "week" },
@@ -95,7 +95,7 @@ const Dashboard: React.FC = () => {
                         onChange={(value) => setTimeRange(value as string)}
                     />
                     <RangePicker placeholder={["Từ ngày", "Đến ngày"]} className="ml-4" format="DD/MM/YYYY" />
-                </Space>
+                </Space> */}
             </div>
 
             {/* Summary Cards */}
