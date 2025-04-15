@@ -176,7 +176,7 @@ const ManageReports = () => {
                 <Radio.Group onChange={handleStatusChange} defaultValue={currentStatus}>
                     <Radio value={0}>Chưa giải quyết</Radio>
                     <Radio value={1}>Đã giải quyết</Radio>
-                    <Radio value={2}>Vật bị loại bỏ</Radio>
+                    <Radio value={2}>Từ chối</Radio>
                 </Radio.Group>
             </Modal>
         </>

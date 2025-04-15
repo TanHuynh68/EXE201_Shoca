@@ -102,7 +102,7 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
                 >
                     <Select
                         placeholder="Select categories"
-                        options={categories.map(category => ({ label: category.name, value: category.id }))}
+                        options={categories.map(category => ({ label: category.name, value: category.name }))}
                     />
                 </Form.Item>
                 <Form.Item

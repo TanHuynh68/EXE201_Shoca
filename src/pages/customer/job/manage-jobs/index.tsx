@@ -25,7 +25,7 @@ const CustomerManageJob = () => {
         if (response) {
             console.log("getJobs: ", response);
             const sortedJobs = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-            setJobs(sortedJobs);
+            setJobs(response);
         }
     };
 

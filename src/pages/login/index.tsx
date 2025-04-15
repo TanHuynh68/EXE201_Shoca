@@ -32,7 +32,7 @@ const LoginPage = () => {
                     navigate('/admin')
                 }
                 else if (decodedToken?.role === 'Staff') {
-                    navigate('/staff')
+                    navigate('/staff/manage-packages')
                 }
                 window.location.reload()
                 localStorage.setItem("token", response.data.accessToken)

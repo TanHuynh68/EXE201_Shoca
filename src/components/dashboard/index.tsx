@@ -51,7 +51,6 @@ const Dashboard: React.FC = () => {
             ]);
         }else if(currentPath.startsWith('/staff')) {
             setItems([
-                getItem('Dashboard', '/staff/', <DesktopOutlined />),
                 getItem('Quản lý gói', '/staff/manage-packages', <UserOutlined />),
                 getItem('Kiểm tra Ai', '/staff/check-ai-artworks', <UserOutlined />),
                 getItem('Quản lý báo cáo', '/staff/manage-reports', <UserOutlined />),
