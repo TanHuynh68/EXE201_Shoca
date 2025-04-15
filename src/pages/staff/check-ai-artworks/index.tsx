@@ -31,8 +31,8 @@ const { Option } = Select;
 
 const statusOptions = [
     { value: 0, label: 'Pending' },
-    { value: 1, label: 'Resolved' },
-    { value: 2, label: 'Rejected' },
+    { value: 1, label: 'NoAi' },
+    { value: 2, label: 'AIgenerated' },
 ];
 const CheckAiArtWork = () => {
     const [atworks, setAtWorks] = useState<AtWork[]>([]);

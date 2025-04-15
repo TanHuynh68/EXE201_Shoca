@@ -76,7 +76,7 @@ const Home = () => {
         const response = await getAtWorksService();
         console.log('getAtWorks: ', response)
         if (response) {
-            setAtWorks(response);
+            setAtWorks(response.filter((item)=> item.status != 'AIgenerated'));
             setFilteredAtworks(response);
         }
     }
