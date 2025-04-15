@@ -94,7 +94,7 @@ const ProfilePage: React.FC = () => {
                 personalWebsiteUrl: profile.personalWebsiteUrl,
                 portfolioUrl: profile.portfolioUrl,
                 phoneNumber: profile.phoneNumber,
-                role: typeof profile.role === "string" ? (profile.role === "Admin" ? 0 : 1) : profile.role,
+                role: typeof profile.role === "string" ? 2 : profile.role,
             })
             setFileUrl(profile.avatarUrl)
         }
